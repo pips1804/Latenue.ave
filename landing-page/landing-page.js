@@ -58,7 +58,7 @@ function displayCustomerLogIn() {
 
 // displaying admin log in form
 function displayAdminLogIn() {
-  const adminLogInForm = document.getElementById("customer-log-in");
+  const adminLogInForm = document.getElementById("admin-log-in");
 
   adminLogInForm.style.display = "block";
 
@@ -97,5 +97,66 @@ function hideFormOnClickOutside(event) {
   if (!cusLogInForm.contains(event.target) && event.target !== triggerButton2) {
     cusLogInForm.style.display = "none";
     document.removeEventListener("click", hideFormOnClickOutside);
+  }
+}
+
+// show password functionality
+function adminSignUp() {
+  const adminSignUpPass = document.getElementById("adminSignUpPass");
+
+  if (adminSignUpPass.type == "password") {
+    adminSignUpPass.type = "text";
+  } else {
+    adminSignUpPass.type = "password";
+  }
+}
+
+function adminSignUpRep() {
+  const adminSignUpRepPass = document.getElementById("adminSignUpRepPass");
+
+  if (adminSignUpRepPass.type == "password") {
+    adminSignUpRepPass.type = "text";
+  } else {
+    adminSignUpRepPass.type = "password";
+  }
+}
+
+function cusSignUp() {
+  const cusSignUpPass = document.getElementById("cusSignUpPass");
+
+  if (cusSignUpPass.type == "password") {
+    cusSignUpPass.type = "text";
+  } else {
+    cusSignUpPass.type = "password";
+  }
+}
+
+function cusSignUpRep() {
+  const cusSignUpRepPass = document.getElementById("cusSignUpRepPass");
+
+  if (cusSignUpRepPass.type == "password") {
+    cusSignUpRepPass.type = "text";
+  } else {
+    cusSignUpRepPass.type = "password";
+  }
+}
+
+function cusPass() {
+  const cusPass = document.getElementById("cusLogPass");
+
+  if (cusPass.type == "password") {
+    cusPass.type = "text";
+  } else {
+    cusPass.type = "password";
+  }
+}
+
+function adminPass() {
+  const adminPass = document.getElementById("adminLogPass");
+
+  if (adminPass.type == "password") {
+    adminPass.type = "text";
+  } else {
+    adminPass.type = "password";
   }
 }

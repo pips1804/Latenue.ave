@@ -80,8 +80,23 @@
           </div>
 
           <div class="password">
-            <label for="">Password</label>
-            <input type="password" name="password" />
+            <div class="show-password-container">
+              <label for="">Password</label>
+              <input type="checkbox" onclick="cusSignUp()" />
+            </div>
+            <input type="password" name="password" id="cusSignUpPass" />
+          </div>
+
+          <div class="repeat-password">
+            <div class="show-password-container">
+              <label for="">Repeat Password</label>
+              <input type="checkbox" onclick="cusSignUpRep()" />
+            </div>
+            <input
+              type="password"
+              name="reapet-password"
+              id="cusSignUpRepPass"
+            />
           </div>
 
           <div class="button-container">
@@ -109,8 +124,23 @@
           </div>
 
           <div class="password">
-            <label for="">Password</label>
-            <input type="password" name="password" />
+            <div class="show-password-container">
+              <label for="">Password</label>
+              <input type="checkbox" onclick="adminSignUp()" />
+            </div>
+            <input type="password" name="password" id="adminSignUpPass" />
+          </div>
+
+          <div class="repeat-password">
+            <div class="show-password-container">
+              <label for="">Repeat Password</label>
+              <input type="checkbox" onclick="adminSignUpRep()" />
+            </div>
+            <input
+              type="password"
+              name="reapet-password"
+              id="adminSignUpRepPass"
+            />
           </div>
 
           <div class="button-container">
@@ -128,8 +158,11 @@
           </div>
 
           <div class="password">
-            <label for="">Password</label>
-            <input type="password" name="password" />
+            <div class="show-password-container">
+              <label for="">Password</label>
+              <input type="checkbox" onclick="cusPass()" />
+            </div>
+            <input type="password" name="password" id="cusLogPass" />
           </div>
 
           <div class="button-container">
@@ -139,7 +172,7 @@
       </div>
 
       <div class="admin-login-form-container" id="admin-log-in">
-        <p>Log In as Customer</p>
+        <p>Log In as Admin</p>
         <form action="" class="admin-log-in">
           <div class="email">
             <label for="">Email</label>
@@ -147,8 +180,11 @@
           </div>
 
           <div class="password">
-            <label for="">Password</label>
-            <input type="password" name="password" />
+            <div class="show-password-container">
+              <label for="">Password</label>
+              <input type="checkbox" onclick="adminPass()" />
+            </div>
+            <input type="password" name="password" id="adminLogPass" />
           </div>
 
           <div class="button-container">

@@ -8,9 +8,9 @@
   flex-direction: column;
   background-color: #6c4e31;
   gap: 20px;
-  height: 600px;
+  height: 680px;
   width: 550px;
-  top: 22%;
+  top: 18%;
   border-radius: 24px;
   display: none;
 }
@@ -39,7 +39,8 @@
 .last-name,
 .first-name,
 .email,
-.password {
+.password,
+.repeat-password {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,8 +76,8 @@ input {
   flex-direction: column;
   background-color: #6c4e31;
   gap: 20px;
-  height: 450px;
-  width: 500px;
+  height: 430px;
+  width: 480px;
   top: 25%;
   border-radius: 24px;
   display: none;
@@ -101,4 +102,11 @@ input {
   flex-direction: column;
   gap: 20px;
   color: #ffeac5;
+}
+
+.show-password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
