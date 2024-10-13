@@ -71,10 +71,10 @@ function displayAdminLogIn() {
 function hideFormOnClickOutside(event) {
   const cusSignUpForm = document.getElementById("customer-sign-up");
   const adminSignUpForm = document.getElementById("admin-sign-up");
-  const triggerButton = document.getElementsByClassName(".sign-up-button");
+  const triggerButton = document.getElementsByClassName("sign-up-button");
   const cusLogInForm = document.getElementById("customer-log-in");
   const adminLogInForm = document.getElementById("admin-log-in");
-  const triggerButton2 = document.getElementsByClassName(".log-in-button");
+  const triggerButton2 = document.getElementsByClassName("log-in-button");
 
   if (!cusSignUpForm.contains(event.target) && event.target !== triggerButton) {
     cusSignUpForm.style.display = "none";

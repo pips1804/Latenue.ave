@@ -140,3 +140,112 @@ button {
     background-image: url(/bg-logo-img/bg1.jpg);
   }
 }
+
+@media (max-width: 999px) {
+  /* header section */
+  .nav-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8%;
+    background-color: #603f26;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+    gap: 20px;
+  }
+
+  .logo-container {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffdbb5;
+  }
+
+  .nav-links-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .log-in-container,
+  .sign-up-container {
+    float: left;
+    overflow: hidden;
+  }
+
+  .log-in-dropdown,
+  .sign-up-dropdown {
+    display: none;
+    margin-top: 4px;
+    position: absolute;
+    z-index: 10;
+    box-shadow: 0px 8px 16px 0px #6c4e31;
+    background-color: #ffeac5;
+    min-width: 50px;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    border-radius: 4px;
+  }
+
+  .log-in-dropdown a,
+  .sign-up-dropdown a {
+    float: none;
+    color: #603f26;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .log-in-dropdown a:hover,
+  .sign-up-dropdown a:hover {
+    background-color: beige;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #ffdbb5;
+    border: 0px;
+    border-radius: 4px;
+    color: #603f26;
+    font-weight: 500;
+  }
+
+  .log-in-show,
+  .sign-up-show {
+    display: block;
+  }
+
+  /* main container */
+  .main-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 219, 181, 0.7);
+    position: relative;
+  }
+
+  .title-container {
+    font-size: 60px;
+    font-weight: 600;
+    color: #603f26;
+  }
+
+  .desc-container {
+    font-size: 16px;
+    color: #603f26;
+    text-align: center;
+    margin: 0 40px;
+  }
+}
