@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Playfair Display", serif;
+}
+
+body {
+  background-color: #ffeac5;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: changes 12s infinite;
+}
+
+/* header section */
+.nav-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 8%;
+  background-color: #603f26;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.logo-container {
+  font-size: 44px;
+  font-weight: bold;
+  color: #ffdbb5;
+}
+
+.nav-links-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 92px;
+}
+
+.log-in-container,
+.sign-up-container {
+  float: left;
+  overflow: hidden;
+}
+
+.log-in-dropdown,
+.sign-up-dropdown {
+  display: none;
+  margin-top: 8px;
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0px 8px 16px 0px #6c4e31;
+  background-color: #ffeac5;
+  min-width: 100px;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  border-radius: 4px;
+}
+
+.log-in-dropdown a,
+.sign-up-dropdown a {
+  float: none;
+  color: #603f26;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+.log-in-dropdown a:hover,
+.sign-up-dropdown a:hover {
+  background-color: beige;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #ffdbb5;
+  border: 0px;
+  border-radius: 4px;
+  color: #603f26;
+  font-weight: 500;
+}
+
+.log-in-show,
+.sign-up-show {
+  display: block;
+}
+
+/* main container */
+.main-container {
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 219, 181, 0.7);
+  position: relative;
+}
+
+.title-container {
+  margin-top: 14%;
+  font-size: 150px;
+  font-weight: 600;
+  color: #603f26;
+}
+
+.desc-container {
+  font-size: 28px;
+  color: #603f26;
+  text-align: center;
+  margin: 0 120px;
+}
+
+@keyframes changes {
+  0% {
+    background-image: url(/bg-logo-img/bg1.jpg);
+  }
+
+  25% {
+    background-image: url(/bg-logo-img/bg2.jpg);
+  }
+
+  50% {
+    background-image: url(/bg-logo-img/bg3.jpg);
+  }
+
+  75% {
+    background-image: url(/bg-logo-img/bg4.jpg);
+  }
+
+  100% {
+    background-image: url(/bg-logo-img/bg1.jpg);
+  }
+}

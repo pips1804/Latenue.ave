@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latenue.ave</title>
+    <link
+      rel="shortcut icon"
+      href="/bg-logo-img/logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/landing-page/landing-page.css" />
+    <link rel="stylesheet" href="/landing-page/form.css" />
+  </head>
+  <body>
+    <header class="nav-container">
+      <div class="logo-container">
+        <p>LA</p>
+      </div>
+      <div class="nav-links-container">
+        <div class="log-in-container">
+          <button class="log-in-drop-btn" onclick="logIn()">
+            Log In <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="log-in-dropdown" id="login-dropdown">
+            <a href="#" onclick="displayAdminLogIn()">As Admin</a>
+            <a href="#" onclick="displayCustomerLogIn()">As Customer</a>
+          </div>
+        </div>
+
+        <div class="sign-up-container">
+          <button class="sign-up-drop-btn" onclick="signUp()">
+            Sign Up <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="sign-up-dropdown" id="signup-dropdown">
+            <a href="#" onclick="displayAdminSignUp()">As Admin</a>
+            <a href="#" onclick="displayCustomerSignUp()">As Customer</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main-container">
+      <div class="title-container">Latenue.ave</div>
+      <div class="desc-container">
+        Latenue.ve is an online clothing business offering a range of apparel,
+        including pants, skirts, dresses, and bags. The name derives from the
+        French phrase "La tenue," translating to 'the outfit' or 'the attire,'
+        reflecting the brand's focus on dressing individuals with style and
+        elegance. Latenue.ve aims to provide a convenient and accessible
+        platform for customers to explore and purchase fashion items from the
+        comfort of their homes.
+      </div>
+
+      <div class="customer-signup-form-container" id="customer-sign-up">
+        <p>Sign Up as Customer</p>
+        <form action="" class="customer-sign-up">
+          <div class="last-name">
+            <label for="">Last Name</label>
+            <input type="text" name="last-name" />
+          </div>
+
+          <div class="first-name">
+            <label for="">First Name</label>
+            <input type="text" name="first-name" />
+          </div>
+
+          <div class="email">
+            <label for="">Email</label>
+            <input type="text" name="email" />
+          </div>
+
+          <div class="password">
+            <label for="">Password</label>
+            <input type="password" name="password" />
+          </div>
+
+          <div class="button-container">
+            <input type="submit" value="Sign Up" class="sign-up-button" />
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-signup-form-container" id="admin-sign-up">
+        <p>Sign Up as Admin</p>
+        <form action="" class="admin-sign-up">
+          <div class="last-name">
+            <label for="">Last Name</label>
+            <input type="text" name="last-name" />
+          </div>
+
+          <div class="first-name">
+            <label for="">First Name</label>
+            <input type="text" name="first-name" />
+          </div>
+
+          <div class="email">
+            <label for="">Email</label>
+            <input type="text" name="email" />
+          </div>
+
+          <div class="password">
+            <label for="">Password</label>
+            <input type="password" name="password" />
+          </div>
+
+          <div class="button-container">
+            <input type="submit" value="Sign Up" class="sign-up-button" />
+          </div>
+        </form>
+      </div>
+
+      <div class="customer-login-form-container" id="customer-log-in">
+        <p>Log In as Customer</p>
+        <form action="" class="customer-log-in">
+          <div class="email">
+            <label for="">Email</label>
+            <input type="text" name="email" />
+          </div>
+
+          <div class="password">
+            <label for="">Password</label>
+            <input type="password" name="password" />
+          </div>
+
+          <div class="button-container">
+            <input type="submit" value="Log In" class="log-in-button" />
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-login-form-container" id="admin-log-in">
+        <p>Log In as Customer</p>
+        <form action="" class="admin-log-in">
+          <div class="email">
+            <label for="">Email</label>
+            <input type="text" name="email" />
+          </div>
+
+          <div class="password">
+            <label for="">Password</label>
+            <input type="password" name="password" />
+          </div>
+
+          <div class="button-container">
+            <input type="submit" value="Log In" class="log-in-button" />
+          </div>
+        </form>
+      </div>
+    </main>
+    <script src="/landing-page/landing-page.js"></script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+/* form container */
+.customer-signup-form-container,
+.admin-signup-form-container {
+  position: absolute;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #6c4e31;
+  gap: 20px;
+  height: 600px;
+  width: 550px;
+  top: 22%;
+  border-radius: 24px;
+  display: none;
+}
+
+.customer-signup-form-container p,
+.admin-signup-form-container p {
+  font-size: 44px;
+  font-weight: 600;
+  color: #ffeac5;
+  margin-top: 40px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.customer-sign-up,
+.admin-sign-up {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  color: #ffeac5;
+}
+
+.last-name,
+.first-name,
+.email,
+.password {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+input {
+  padding: 8px 40px 8px 4px;
+  color: #603f26;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 0px;
+  background-color: #ffeac5;
+}
+
+.sign-up-button,
+.log-in-button {
+  padding: 8px 16px;
+  font-size: 24px;
+  background-color: #ffdbb5;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.customer-login-form-container,
+.admin-login-form-container {
+  position: absolute;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #6c4e31;
+  gap: 20px;
+  height: 450px;
+  width: 500px;
+  top: 25%;
+  border-radius: 24px;
+  display: none;
+}
+
+.customer-login-form-container p,
+.admin-login-form-container p {
+  font-size: 44px;
+  font-weight: 600;
+  color: #ffeac5;
+  margin-top: 40px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.customer-log-in,
+.admin-log-in {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  color: #ffeac5;
+}
