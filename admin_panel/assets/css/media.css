@@ -1,0 +1,65 @@
+@media (max-width: 999px) {
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-bar {
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+  }
+
+  .logo {
+    font-size: 32px;
+    margin-left: 50px;
+  }
+
+  .openbtn {
+    margin-top: 80px;
+  }
+
+  .sidebar {
+    top: 60px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    margin-bottom: 4px;
+  }
+
+  .category-table,
+  .size-table,
+  .prod-size-table,
+  .customer-table {
+    width: 300px;
+  }
+
+  tr th,
+  tr td {
+    font-size: 16px;
+  }
+
+  .scrollable-table {
+    max-width: 380px;
+    margin-bottom: 8px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #myModal {
+    top: 70px;
+  }
+}

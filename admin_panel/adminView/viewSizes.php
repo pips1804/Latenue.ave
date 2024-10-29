@@ -1,34 +1,35 @@
-
-<div >
-  <h3>Available Sizes</h3>
-  <table class="table ">
-    <thead>
-      <tr>
-        <th class="text-center">S.N.</th>
-        <th class="text-center">Size</th>
-        <th class="text-center" colspan="2">Action</th>
-      </tr>
-    </thead>
-    <?php
-      include_once "../config/dbconnect.php";
-      $sql="SELECT * from sizes";
-      $result=$conn-> query($sql);
-      $count=1;
-      if ($result-> num_rows > 0){
-        while ($row=$result-> fetch_assoc()) {
-    ?>
-    <tr>
-      <td><?=$count?></td>
-      <td><?=$row["size_name"]?></td>   
-      <!-- <td><button class="btn btn-primary" >Edit</button></td> -->
-      <td><button class="btn btn-danger" style="height:40px" onclick="sizeDelete('<?=$row['size_id']?>')">Delete</button></td>
-      </tr>
+<div>
+  <p class="section-title">Available Sizes</p>
+  <div class="scrollable-table size-table">
+    <table class="table ">
+      <thead>
+        <tr>
+          <th class="text-center">S.N.</th>
+          <th class="text-center">Size</th>
+          <th class="text-center" colspan="2">Action</th>
+        </tr>
+      </thead>
       <?php
-            $count=$count+1;
-          }
-        }
+      include_once "../config/dbconnect.php";
+      $sql = "SELECT * from sizes";
+      $result = $conn->query($sql);
+      $count = 1;
+      if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
       ?>
-  </table>
+          <tr>
+            <td><?= $count ?></td>
+            <td><?= $row["size_name"] ?></td>
+            <!-- <td><button class="btn btn-primary" >Edit</button></td> -->
+            <td><button class="btn btn-danger" style="height:40px" onclick="sizeDelete('<?= $row['size_id'] ?>')">Delete</button></td>
+          </tr>
+      <?php
+          $count = $count + 1;
+        }
+      }
+      ?>
+    </table>
+  </div>
 
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-secondary" style="height:40px" data-toggle="modal" data-target="#myModal">
@@ -38,7 +39,7 @@
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -46,13 +47,13 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form  enctype='multipart/form-data' action="./controller/addSizeController.php" method="POST">
+          <form enctype='multipart/form-data' action="./controller/addSizeController.php" method="POST">
             <div class="form-group">
-              <label for="size">Size Number:</label>
+              <label for="size" class="modal-title">Size Number:</label>
               <input type="text" class="form-control" name="size" required>
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-secondary" name="upload" style="height:40px">Add Size</button>
+              <button type="submit" class="btn btn-secondary" name="upload" style="height:40px" class="modal-title">Add Size</button>
             </div>
           </form>
 
@@ -61,10 +62,9 @@
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>
-      
+
     </div>
   </div>
 
-  
+
 </div>
-   

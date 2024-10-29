@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once "./config/dbconnect.php";
+include_once "./sidebar.php"
 
 ?>
 
