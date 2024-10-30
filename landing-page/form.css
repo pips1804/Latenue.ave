@@ -1,6 +1,5 @@
 /* form container */
-.customer-signup-form-container,
-.admin-signup-form-container {
+.customer-signup-form-container {
   position: absolute;
   display: flex;
   justify-content: start;
@@ -13,6 +12,7 @@
   top: 18%;
   border-radius: 24px;
   display: none;
+  overflow-y: auto;
 }
 
 .customer-signup-form-container p,
@@ -28,12 +28,46 @@
 .customer-sign-up,
 .admin-sign-up {
   margin-top: 12px;
+  gap: 20px;
+  color: #ffeac5;
+  top: 50%;
+}
+
+.customer-sign-up > * {
+  margin-bottom: 16px;
+}
+
+.button-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  color: #ffeac5;
+}
+
+.customer-sign-up {
+  height: 500px;
+  width: auto;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 4px #ffeac5;
+  border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffeac5;
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffdbb5;
 }
 
 .last-name,
@@ -122,7 +156,7 @@ input {
     flex-direction: column;
     background-color: #6c4e31;
     gap: 20px;
-    height: 480px;
+    height: 500px;
     width: 350px;
     top: 25%;
     border-radius: 20px;
@@ -142,12 +176,13 @@ input {
   .customer-sign-up,
   .admin-sign-up {
     margin-top: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
     color: #ffeac5;
+    height: 400px;
+    padding-bottom: 20px;
+  }
+
+  .customer-sign-up > * {
+    margin-bottom: 12px;
   }
 
   .last-name,

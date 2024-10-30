@@ -34,17 +34,6 @@ function displayCustomerSignUp() {
   }, 0);
 }
 
-// displaying admin sign up form
-function displayAdminSignUp() {
-  const cusSignUpForm = document.getElementById("admin-sign-up");
-
-  cusSignUpForm.style.display = "block";
-
-  setTimeout(() => {
-    document.addEventListener("click", hideFormOnClickOutside);
-  }, 0);
-}
-
 // displaying customer log in form
 function displayCustomerLogIn() {
   const cusLogInForm = document.getElementById("customer-log-in");
@@ -70,7 +59,6 @@ function displayAdminLogIn() {
 // hiding customer or admin sign up/log in form
 function hideFormOnClickOutside(event) {
   const cusSignUpForm = document.getElementById("customer-sign-up");
-  const adminSignUpForm = document.getElementById("admin-sign-up");
   const triggerButton = document.getElementsByClassName("sign-up-button");
   const cusLogInForm = document.getElementById("customer-log-in");
   const adminLogInForm = document.getElementById("admin-log-in");
@@ -78,13 +66,6 @@ function hideFormOnClickOutside(event) {
 
   if (!cusSignUpForm.contains(event.target) && event.target !== triggerButton) {
     cusSignUpForm.style.display = "none";
-    document.removeEventListener("click", hideFormOnClickOutside);
-  }
-  if (
-    !adminSignUpForm.contains(event.target) &&
-    event.target !== triggerButton
-  ) {
-    adminSignUpForm.style.display = "none";
     document.removeEventListener("click", hideFormOnClickOutside);
   }
   if (
