@@ -19,8 +19,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="/landing-page/landing-page.css" />
-    <link rel="stylesheet" href="/landing-page/form.css" />
+    <link rel="stylesheet" href="landing-page.css" />
+    <link rel="stylesheet" href="form.css" />
   </head>
   <body>
     <header class="nav-container">
@@ -62,7 +62,7 @@
 
       <div class="customer-signup-form-container" id="customer-sign-up">
         <p>Sign Up as Customer</p>
-        <form action="" class="customer-sign-up">
+        <form action="script/signup.php" class="customer-sign-up" method="post">
           <div class="last-name">
             <label for="">Last Name</label>
             <input type="text" name="last-name" />
@@ -108,6 +108,11 @@
             <input type="text" name="postalcode" />
           </div>
 
+          <div class="email">
+            <label for="">Phone Number</label>
+            <input type="text" name="phone-number" />
+          </div>
+
           <div class="password">
             <div class="show-password-container">
               <label for="">Password</label>
@@ -123,20 +128,20 @@
             </div>
             <input
               type="password"
-              name="reapet-password"
+              name="repeat-password"
               id="cusSignUpRepPass"
             />
           </div>
 
           <div class="button-container">
-            <input type="submit" value="Sign Up" class="sign-up-button" />
+            <input type="submit" value="Sign Up" class="sign-up-button" name="sign-up" />
           </div>
         </form>
       </div>
 
       <div class="customer-login-form-container" id="customer-log-in">
         <p>Log In as Customer</p>
-        <form action="" class="customer-log-in">
+        <form action="script/login.php" class="customer-log-in" method="post">
           <div class="email">
             <label for="">Email</label>
             <input type="text" name="email" />
@@ -151,7 +156,7 @@
           </div>
 
           <div class="button-container">
-            <input type="submit" value="Log In" class="log-in-button" />
+            <input type="submit" value="Log In" class="log-in-button" name="login"/>
           </div>
         </form>
       </div>
@@ -178,6 +183,23 @@
         </form>
       </div>
     </main>
-    <script src="/landing-page/landing-page.js"></script>
+    <script src="landing-page.js"></script>
+
+    <?php
+            if (isset($_GET['login']) && $_GET['login'] == "error") {
+              echo '<script> alert("Incorrect Email or Password")</script>';
+            }
+            if (isset($_GET['signup']) && $_GET['signup'] == "success") {
+              echo '<script> alert("Signup Succesfully")</script>';
+            }
+            else if (isset($_GET['signup']) && $_GET['signup'] == "pwnotmatched") {
+              echo '<script> alert("Password not matched!")</script>';
+            }
+            else if (isset($_GET['signup']) && $_GET['signup'] == "error") {
+              echo '<script> alert("Email Already Exist!")</script>';
+            }
+
+    ?>
+
   </body>
 </html>
