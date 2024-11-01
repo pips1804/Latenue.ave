@@ -33,8 +33,9 @@
   .category-table,
   .size-table,
   .prod-size-table,
-  .customer-table {
-    width: 300px;
+  .customer-table,
+  .ship-address-table {
+    width: 380px;
   }
 
   tr th,
@@ -42,7 +43,8 @@
     font-size: 16px;
   }
 
-  .scrollable-table {
+  .scrollable-table,
+  .scrollable-order-details {
     max-width: 380px;
     margin-bottom: 8px;
   }

@@ -74,6 +74,10 @@
                     <input type="number" class="form-control" id="qty" value="<?= $row1['quantity_in_stock'] ?>" required>
                 </div>
                 <div class="form-group">
+                    <label for="unit_price">Unit Price:</label>
+                    <input type="number" class="form-control" id="unit_price" value="<?= $row1['unit_price'] ?>" required>
+                </div>
+                <div class="form-group">
                     <button type="submit" style="height:40px" class="btn btn-primary">Update Variation</button>
                 </div>
         <?php

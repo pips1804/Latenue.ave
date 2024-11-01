@@ -9,13 +9,13 @@
           <th class="text-center">Product Name</th>
           <th class="text-center">Product Description</th>
           <th class="text-center">Category Name</th>
-          <th class="text-center">Unit Price</th>
+          <th class="text-center">Supplier</th>
           <th class="text-center" colspan="2">Action</th>
         </tr>
       </thead>
       <?php
       include_once "../config/dbconnect.php";
-      $sql = "SELECT * from product, category WHERE product.category_id=category.category_id";
+      $sql = "SELECT * from product, category, supplier WHERE product.category_id=category.category_id AND product.supplier_id=supplier.supplier_id";
       $result = $conn->query($sql);
       $count = 1;
       if ($result->num_rows > 0) {
@@ -27,7 +27,7 @@
             <td><?= $row["product_name"] ?></td>
             <td><?= $row["product_desc"] ?></td>
             <td><?= $row["category_name"] ?></td>
-            <td><?= $row["price"] ?></td>
+            <td><?= $row["supp_name"] ?></td>
             <td><button class="btn btn-primary" style="height:40px" onclick="itemEditForm('<?= $row['product_id'] ?>')">Edit</button></td>
             <td><button class="btn btn-danger" style="height:40px" onclick="itemDelete('<?= $row['product_id'] ?>')">Delete</button></td>
           </tr>
@@ -61,10 +61,6 @@
               <input type="text" class="form-control" id="p_name" required>
             </div>
             <div class="form-group">
-              <label for="price" class="modal-title">Price:</label>
-              <input type="number" class="form-control" id="p_price" required>
-            </div>
-            <div class="form-group">
               <label for="qty" class="modal-title">Description:</label>
               <input type="text" class="form-control" id="p_desc" required>
             </div>
@@ -80,6 +76,23 @@
                 if ($result->num_rows > 0) {
                   while ($row = $result->fetch_assoc()) {
                     echo "<option value='" . $row['category_id'] . "'>" . $row['category_name'] . "</option>";
+                  }
+                }
+                ?>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="modal-title">Supplier:</label>
+              <select id="supplier">
+                <option disabled selected>Select supplier</option>
+                <?php
+
+                $sql = "SELECT * from supplier";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['supplier_id'] . "'>" . $row['supp_name'] . "</option>";
                   }
                 }
                 ?>

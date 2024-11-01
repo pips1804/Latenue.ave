@@ -57,3 +57,16 @@ body {
   display: block;
   width: 250px;
 }
+
+.order-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.total-amount {
+  color: #603f26;
+  font-size: 28px;
+  font-weight: bold;
+}

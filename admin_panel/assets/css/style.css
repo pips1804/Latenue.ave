@@ -168,9 +168,16 @@ table {
   margin-bottom: 16px;
 }
 
+.scrollable-order-details {
+  max-height: 350px;
+  height: auto;
+  width: auto;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
 .category-table,
-.size-table,
-.prod-size-table {
+.size-table {
   width: 600px;
 }
 

@@ -18,6 +18,17 @@ function showCategory() {
     },
   });
 }
+
+function showSupplier() {
+  $.ajax({
+    url: "./adminView/viewAllSuppliers.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
 function showSizes() {
   $.ajax({
     url: "./adminView/viewSizes.php",
@@ -88,19 +99,27 @@ function ChangePay(id) {
 }
 
 //add product data
+
+$(document).ready(function () {
+  $("#addProductForm").on("submit", function (e) {
+    e.preventDefault(); // Prevent the form from submitting in the traditional way
+    addItems(); // Call the addItems() function via AJAX
+  });
+});
+
 function addItems() {
   var p_name = $("#p_name").val();
   var p_desc = $("#p_desc").val();
-  var p_price = $("#p_price").val();
   var category = $("#category").val();
+  var supplier = $("#supplier").val();
   var upload = $("#upload").val();
   var file = $("#file")[0].files[0];
 
   var fd = new FormData();
   fd.append("p_name", p_name);
   fd.append("p_desc", p_desc);
-  fd.append("p_price", p_price);
   fd.append("category", category);
+  fd.append("supplier", supplier);
   fd.append("file", file);
   fd.append("upload", upload);
   $.ajax({
@@ -133,16 +152,16 @@ function updateItems() {
   var product_id = $("#product_id").val();
   var p_name = $("#p_name").val();
   var p_desc = $("#p_desc").val();
-  var p_price = $("#p_price").val();
   var category = $("#category").val();
+  var supplier = $("#supplier").val();
   var existingImage = $("#existingImage").val();
   var newImage = $("#newImage")[0].files[0];
   var fd = new FormData();
   fd.append("product_id", product_id);
   fd.append("p_name", p_name);
   fd.append("p_desc", p_desc);
-  fd.append("p_price", p_price);
   fd.append("category", category);
+  fd.append("supplier", supplier);
   fd.append("existingImage", existingImage);
   fd.append("newImage", newImage);
 
@@ -213,6 +232,19 @@ function categoryDelete(id) {
   });
 }
 
+function supplierDelete(id) {
+  $.ajax({
+    url: "./controller/suppDeleteController.php",
+    method: "post",
+    data: { record: id },
+    success: function (data) {
+      alert("Supplier Successfully deleted");
+      $("form").trigger("reset");
+      showSupplier();
+    },
+  });
+}
+
 //delete size data
 function sizeDelete(id) {
   $.ajax({
@@ -259,11 +291,13 @@ function updateVariations() {
   var product = $("#product").val();
   var size = $("#size").val();
   var qty = $("#qty").val();
+  var unit_price = $("#unit_price").val();
   var fd = new FormData();
   fd.append("v_id", v_id);
   fd.append("product", product);
   fd.append("size", size);
   fd.append("qty", qty);
+  fd.append("unit_price", unit_price);
 
   $.ajax({
     url: "./controller/updateVariationController.php",

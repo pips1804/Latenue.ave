@@ -5,9 +5,11 @@
       <thead>
         <tr>
           <th class="text-center">S.N.</th>
+          <th class="text-center">Product Image</th>
           <th class="text-center">Product Name</th>
           <th class="text-center">Size</th>
           <th class="text-center">Stock Quantity</th>
+          <th class="text-center">Unit Price</th>
           <th class="text-center" colspan="2">Action</th>
         </tr>
       </thead>
@@ -22,8 +24,10 @@
           <tr>
             <td><?= $count ?></td>
             <td><?= $row["product_name"] ?></td>
+            <td><img height='100px' src='<?= $row["product_image"] ?>'></td>
             <td><?= $row["size_name"] ?></td>
             <td><?= $row["quantity_in_stock"] ?></td>
+            <td><?= $row["unit_price"] ?></td>
             <td><button class="btn btn-primary" style="height:40px" onclick="variationEditForm('<?= $row['variation_id'] ?>')">Edit</button></td>
             <td><button class="btn btn-danger" style="height:40px" onclick="variationDelete('<?= $row['variation_id'] ?>')">Delete</button></td>
           </tr>
@@ -91,6 +95,12 @@
               <label for="qty" class="modal-title">Stock Quantity:</label>
               <input type="number" class="form-control" name="qty" required>
             </div>
+
+            <div class="form-group">
+              <label for="unit_price" class="modal-title">Unit Price:</label>
+              <input type="number" class="form-control" name="unit_price" required>
+            </div>
+
             <div class="form-group">
               <button type="submit" class="btn btn-secondary" name="upload" style="height:40px">Add Variation</button>
             </div>

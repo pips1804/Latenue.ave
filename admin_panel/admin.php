@@ -45,6 +45,7 @@
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <a href="./admin.php"><i class="fa fa-home"></i> Dashboard</a>
     <a href="#customers" onclick="showCustomers(); closeNav()"><i class="fa fa-users"></i> Customers</a>
+    <a href="#products" onclick="showSupplier(); closeNav()"><i class="fa fa-users"></i> Suppliers</a>
     <a href="#category" onclick="showCategory(); closeNav()"><i class="fa fa-th-large"></i> Category</a>
     <a href="#sizes" onclick="showSizes(); closeNav()"><i class="fa fa-th"></i> Sizes</a>
     <a href="#productsizes" onclick="showProductSizes(); closeNav()"><i class="fa fa-th-list"></i> Product Sizes</a>
@@ -165,6 +166,11 @@
   if (isset($_GET['variation']) && $_GET['variation'] == "success") {
     echo '<script> alert("Variation Successfully Added")</script>';
   } else if (isset($_GET['variation']) && $_GET['variation'] == "error") {
+    echo '<script> alert("Adding Unsuccess")</script>';
+  }
+  if (isset($_GET['supplier']) && $_GET['supplier'] == "success") {
+    echo '<script> alert("Supplier Successfully Added")</script>';
+  } else if (isset($_GET['supplier']) && $_GET['supplier'] == "error") {
     echo '<script> alert("Adding Unsuccess")</script>';
   }
   ?>

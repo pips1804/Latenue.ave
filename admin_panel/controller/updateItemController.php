@@ -1,11 +1,12 @@
 <?php
 include_once "../config/dbconnect.php";
+define('UPLOAD_PATH', '../uploads/');
 
 $product_id = $_POST['product_id'];
 $p_name = $_POST['p_name'];
 $p_desc = $_POST['p_desc'];
-$p_price = $_POST['p_price'];
 $category = $_POST['category'];
+$supplier = $_POST['supplier'];
 
 if (isset($_FILES['newImage'])) {
 
@@ -27,8 +28,8 @@ if (isset($_FILES['newImage'])) {
 $updateItem = mysqli_query($conn, "UPDATE product SET 
         product_name='$p_name', 
         product_desc='$p_desc', 
-        price=$p_price,
         category_id=$category,
+        supplier_id=$supplier,
         product_image='$final_image' 
         WHERE product_id=$product_id");
 

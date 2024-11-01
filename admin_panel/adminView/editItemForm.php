@@ -8,6 +8,7 @@
   if ($numberOfRow > 0) {
     while ($row1 = mysqli_fetch_array($qry)) {
       $catID = $row1["category_id"];
+      $suppID = $row1["supplier_id"];
   ?>
       <form id="update-Items" onsubmit="updateItems()" enctype='multipart/form-data'>
         <div class="form-group">
@@ -20,10 +21,6 @@
         <div class="form-group">
           <label for="desc">Product Description:</label>
           <input type="text" class="form-control" id="p_desc" value="<?= $row1['product_desc'] ?>">
-        </div>
-        <div class="form-group">
-          <label for="price">Unit Price:</label>
-          <input type="number" class="form-control" id="p_price" value="<?= $row1['price'] ?>">
         </div>
         <div class="form-group">
           <label>Category:</label>
@@ -43,6 +40,29 @@
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
                 echo "<option value='" . $row['category_id'] . "'>" . $row['category_name'] . "</option>";
+              }
+            }
+            ?>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Supplier:</label>
+          <select id="supplier">
+            <?php
+            $sql = "SELECT * from supplier WHERE supplier_id='$suppID'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['supplier_id'] . "'>" . $row['supp_name'] . "</option>";
+              }
+            }
+            ?>
+            <?php
+            $sql = "SELECT * from supplier WHERE supplier_id!='$suppID'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['supplier_id'] . "'>" . $row['supp_name'] . "</option>";
               }
             }
             ?>
