@@ -17,6 +17,10 @@
     margin-left: 50px;
   }
 
+  .logout-icon i {
+    margin-right: 50px;
+  }
+
   .openbtn {
     margin-top: 80px;
   }

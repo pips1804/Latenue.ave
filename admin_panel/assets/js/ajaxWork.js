@@ -72,6 +72,17 @@ function showOrders() {
   });
 }
 
+function showAdmin() {
+  $.ajax({
+    url: "./adminView/viewAdmin.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
+
 function ChangeOrderStatus(id) {
   $.ajax({
     url: "./controller/updateOrderStatus.php",
@@ -100,12 +111,12 @@ function ChangePay(id) {
 
 //add product data
 
-$(document).ready(function () {
-  $("#addProductForm").on("submit", function (e) {
-    e.preventDefault(); // Prevent the form from submitting in the traditional way
-    addItems(); // Call the addItems() function via AJAX
-  });
-});
+// $(document).ready(function () {
+//   $("#addProductForm").on("submit", function (e) {
+//     e.preventDefault(); // Prevent the form from submitting in the traditional way
+//     addItems(); // Call the addItems() function via AJAX
+//   });
+// });
 
 function addItems() {
   var p_name = $("#p_name").val();
@@ -207,6 +218,19 @@ function cartDelete(id) {
   });
 }
 
+function adminDelete(id) {
+  $.ajax({
+    url: "./controller/deleteAdminController.php",
+    method: "post",
+    data: { record: id },
+    success: function (data) {
+      alert("Items Successfully deleted");
+      $("form").trigger("reset");
+      showAdmin();
+    },
+  });
+}
+
 function eachDetailsForm(id) {
   $.ajax({
     url: "./view/viewEachDetails.php",
@@ -285,6 +309,17 @@ function variationEditForm(id) {
   });
 }
 
+function adminEditForm(id) {
+  $.ajax({
+    url: "./adminView/editAdminForm.php",
+    method: "post",
+    data: { record: id },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
+
 //update variation after submit
 function updateVariations() {
   var v_id = $("#v_id").val();
@@ -312,6 +347,34 @@ function updateVariations() {
     },
   });
 }
+
+function updateAdmin() {
+  var u_id = $("#u_id").val();
+  var fname = $("#fname").val();
+  var lname = $("#lname").val();
+  var email = $("#email").val();
+  var password = $("#password").val();
+  var fd = new FormData();
+  fd.append("u_id", u_id);
+  fd.append("fname", fname);
+  fd.append("lname", lname);
+  fd.append("email", email);
+  fd.append("password", password);
+
+  $.ajax({
+    url: "./controller/updateAdminController.php",
+    method: "post",
+    data: fd,
+    processData: false,
+    contentType: false,
+    success: function (data) {
+      alert("Update Success.");
+      $("form").trigger("reset");
+      showAdmin();
+    },
+  });
+}
+
 function search(id) {
   $.ajax({
     url: "./controller/searchController.php",

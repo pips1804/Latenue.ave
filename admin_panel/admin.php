@@ -23,6 +23,7 @@
 <body>
   <nav class="nav-bar">
     <p class="logo">LA</p>
+    <a href="" class="logout-icon"> <i class="fa-solid fa-right-from-bracket"></i></a>
   </nav>
 
   <div class="sidebar" id="mySidebar" style="background-color: #6c4e31">
@@ -41,16 +42,52 @@
           border: 1px solid;
           background-color: #ffdbb5;
           border-color: #603f26;
+          margin: 12px 0;
         " />
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <a href="./admin.php"><i class="fa fa-home"></i> Dashboard</a>
+
+    <!-- <a href="javascript:void(0)" class="dropdown-btn" onclick="togglePayInfoDropdown()">
+      <i class="fa fa-credit-card"></i> MOP Info. <i class="fa fa-caret-down"></i>
+    </a>
+    <div class="pay-info-container" style="display: none; margin-left: 20px;">
+      <a href="./e-wallet.php"><i class="fa fa-wallet"></i> E-Wallet</a>
+      <a href="./bank-account.php"><i class="fa fa-university"></i> Bank Account</a>
+    </div> -->
+
+    <a href="javascript:void(0)" class="dropdown-btn" onclick="toggleProdInfoDropdown()">
+      <i class="fa fa-shirt"></i> Product Info. <i class="fa fa-caret-down"></i>
+    </a>
+    <div class="prod-info-container" style="display: none; margin-left: 20px;">
+      <a href="#category" onclick="showCategory(); closeNav()"><i class="fa fa-th-large"></i> Category</a>
+      <a href="#sizes" onclick="showSizes(); closeNav()"><i class="fa fa-th"></i> Sizes</a>
+    </div>
+
+    <a href="javascript:void(0)" class="dropdown-btn" onclick="toggleInventoryDropdown()">
+      <i class="fa fa-warehouse"></i> Inventory <i class="fa fa-caret-down"></i>
+    </a>
+    <div class="inventory-container" style="display: none; margin-left: 20px;">
+      <a href="#products" onclick="showProductItems(); closeNav()"><i class="fa fa-th"></i> Products</a>
+      <a href="#productsizes" onclick="showProductSizes(); closeNav()"><i class="fa fa-th-list"></i> Product Sizes</a>
+    </div>
+
     <a href="#customers" onclick="showCustomers(); closeNav()"><i class="fa fa-users"></i> Customers</a>
-    <a href="#products" onclick="showSupplier(); closeNav()"><i class="fa fa-users"></i> Suppliers</a>
-    <a href="#category" onclick="showCategory(); closeNav()"><i class="fa fa-th-large"></i> Category</a>
-    <a href="#sizes" onclick="showSizes(); closeNav()"><i class="fa fa-th"></i> Sizes</a>
-    <a href="#productsizes" onclick="showProductSizes(); closeNav()"><i class="fa fa-th-list"></i> Product Sizes</a>
-    <a href="#products" onclick="showProductItems(); closeNav()"><i class="fa fa-th"></i> Products</a>
+
+    <a href="#products" onclick="showSupplier(); closeNav()"><i class="fa fa-user-tag"></i> Suppliers</a>
+
     <a href="#orders" onclick="showOrders(); closeNav()"><i class="fa fa-list"></i> Orders</a>
+
+    <hr
+      style="
+          border: 1px solid;
+          background-color: #ffdbb5;
+          border-color: #603f26;
+          margin: 4px 0;
+        " />
+
+    <a href="#admin" onclick="showAdmin(); closeNav()"> <i class="fa fa-user"></i> Admin Details</a>
+
+    <a href=""> <i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
 
   </div>
 
@@ -179,6 +216,9 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+  <script
+    src="https://kit.fontawesome.com/28c1079d43.js"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

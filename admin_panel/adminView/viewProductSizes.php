@@ -20,8 +20,16 @@
       $count = 1;
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+
+          $rowClass = '';
+          if ($row["quantity_in_stock"] == 0) {
+            $rowClass = 'out-of-stock';  // For zero stock
+          } elseif ($row["quantity_in_stock"] < 5) {
+            $rowClass = 'low-stock';     // For stock below 5
+          }
+
       ?>
-          <tr>
+          <tr class="<?= $rowClass ?>">
             <td><?= $count ?></td>
             <td><?= $row["product_name"] ?></td>
             <td><img height='100px' src='<?= $row["product_image"] ?>'></td>

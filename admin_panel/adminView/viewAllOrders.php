@@ -16,7 +16,7 @@
       </thead>
       <?php
       include_once "../config/dbconnect.php";
-      $sql = "SELECT * from orders";
+      $sql = "SELECT * from orders, mode_of_payment WHERE orders.payment_method_id = mode_of_payment.payment_method_id";
       $result = $conn->query($sql);
 
       if ($result->num_rows > 0) {
@@ -27,7 +27,7 @@
             <td><?= $row["delivered_to"] ?></td>
             <td><?= $row["phone_no"] ?></td>
             <td><?= $row["order_date"] ?></td>
-            <td><?= $row["pay_method"] ?></td>
+            <td><?= $row["payment_method"] ?></td>
             <?php
             if ($row["order_status"] == 0) {
 

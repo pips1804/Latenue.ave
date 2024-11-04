@@ -161,10 +161,10 @@
 
     <div class="admin-login-form-container" id="admin-log-in">
       <p>Log In as Admin</p>
-      <form action="" class="admin-log-in">
+      <form action="script/admin-login.php" class="admin-log-in" method="post">
         <div class="email">
           <label for="">Email</label>
-          <input type="text" name="email" />
+          <input type="text" name="admin-email" />
         </div>
 
         <div class="password">
@@ -172,11 +172,11 @@
             <label for="">Password</label>
             <input type="checkbox" onclick="adminPass()" />
           </div>
-          <input type="password" name="password" id="adminLogPass" />
+          <input type="password" name="admin-password" id="adminLogPass" />
         </div>
 
         <div class="button-container">
-          <input type="submit" value="Log In" class="log-in-button" />
+          <input type="submit" value="Log In" class="log-in-button" name="admin-login" />
         </div>
       </form>
     </div>

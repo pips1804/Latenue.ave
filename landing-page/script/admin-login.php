@@ -2,11 +2,13 @@
 session_start();
 include '../../admin_panel/config/dbconnect.php';
 
-if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+if (isset($_POST['admin-login'])) {
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND users.isAdmin = 0");
+
+    $email = $_POST['admin-email'];
+    $password = $_POST['admin-password'];
+
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND users.isAdmin = 1");
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -15,7 +17,7 @@ if (isset($_POST['login'])) {
 
         $row = $result->fetch_assoc();
         $_SESSION['email'] = $row['email'];
-        header("Location: ../../customer-panel/mainpage.php");
+        header("Location: ../../admin_panel/admin.php");
         exit();
     } else {
         header("Location: ../index.php?login=error");
