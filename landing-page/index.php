@@ -7,7 +7,7 @@
   <title>Latenue.ave</title>
   <link
     rel="shortcut icon"
-    href="/bg-logo-img/logo.jpg"
+    href="../bg-logo-img/logo.jpg"
     type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

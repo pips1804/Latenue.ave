@@ -11,7 +11,7 @@ if (isset($_POST['upload'])) {
 
     if (!$insert) {
         echo mysqli_error($conn);
-        header("Location: ../sidebar.php?category=error");
+        header("Location: ../admin.php?category=error");
     } else {
         header("Location: ../admin.php?category=success");
     }

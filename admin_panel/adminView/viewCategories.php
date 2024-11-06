@@ -39,8 +39,6 @@
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">New Category Item</h4>
@@ -56,15 +54,11 @@
               <button type="submit" class="btn btn-secondary" name="upload" style="height:40px">Add Category</button>
             </div>
           </form>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal" style="height:40px">Close</button>
         </div>
       </div>
-
     </div>
   </div>
-
-
 </div>
