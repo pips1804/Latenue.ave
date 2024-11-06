@@ -50,7 +50,7 @@
     <div class="best-selling-container">
       <p class="title-container">Top Products</p>
       <div class="item-cards-container">
-        <div class="card" style="width: 18rem">
+        <div class="card" style="width: 18rem; height: 30rem;">
           <img
             src="img/black-long-sleeve.jpg"
             class="card-img-top"
@@ -62,11 +62,11 @@
               Silky sexy long sleeve top with highwaist beaded skirt. Not your
               ordinary office casual
             </p>
-            <a href="#" class="btn">Add to cart</a>
+            <button class="btn add-to-cart-btn" type="submit">Add to cart</button>
           </div>
         </div>
 
-        <div class="card" style="width: 18rem">
+        <div class="card" style="width: 18rem; height: 30rem;">
           <img
             src="img/line-suit-n-tie.jpg"
             class="card-img-top"
@@ -78,11 +78,11 @@
               Step up your fashion taste with line styled blouse with necktie
               and high waist skirt.
             </p>
-            <a href="#" class="btn">Add to cart</a>
+            <button class="btn add-to-cart-btn" type="submit">Add to cart</button>
           </div>
         </div>
 
-        <div class="card" style="width: 18rem">
+        <div class="card" style="width: 18rem; height: 30rem;">
           <img
             src="img/longsleevedress.jpg"
             class="card-img-top"
@@ -94,11 +94,11 @@
               Step up your style with soft chiffon long sleeve top and
               highwaist skirt with flower. choker
             </p>
-            <a href="#" class="btn">Add to cart</a>
+            <button class="btn add-to-cart-btn" type="submit">Add to cart</button>
           </div>
         </div>
 
-        <div class="card" style="width: 18rem">
+        <div class="card" style="width: 18rem; height: 30rem;">
           <img
             src="img/mini-long-sleeve.jpg"
             class="card-img-top"
@@ -110,11 +110,11 @@
               Double lined textured fabric with low V neck line. Good for
               casual attire.
             </p>
-            <a href="#" class="btn">Add to cart</a>
+            <button class="btn add-to-cart-btn" type="submit">Add to cart</button>
           </div>
         </div>
 
-        <div class="card" style="width: 18rem">
+        <div class="card" style="width: 18rem; height: 30rem;">
           <img
             src="img/sleeveless-polo.jpg"
             class="card-img-top"
@@ -126,9 +126,36 @@
               Sleeveless polo shirt with highwaist black skirt With detachable
               gold brooch pin.
             </p>
-            <a href="#" class="btn">Add to cart</a>
+            <button class="btn add-to-cart-btn" type="submit">Add to cart</button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="products-container">
+      <p class="title-container">Products</p>
+      <div class="item-cards-container">
+        <?php
+        include_once "../admin_panel/config/dbconnect.php";
+        $sql = "SELECT * FROM product ORDER BY product.product_name ASC";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+        ?>
+            <div class="card product" style="width: 14rem; height: 320px;">
+              <img
+                src='../admin_panel<?= $row["product_image"] ?>'
+                height='200px'
+                style="object-fit: cover;">
+              <div class="card-body">
+                <h6 class="card-title"><?= $row["product_name"] ?></h6>
+                <button class="btn add-to-cart-btn" type="submit">Add to cart</button>
+              </div>
+            </div>
+        <?php
+          }
+        }
+        ?>
       </div>
     </div>
   </main>

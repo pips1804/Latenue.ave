@@ -4,7 +4,6 @@ include '../../admin_panel/config/dbconnect.php';
 
 if (isset($_POST['admin-login'])) {
 
-
     $email = $_POST['admin-email'];
     $password = $_POST['admin-password'];
 

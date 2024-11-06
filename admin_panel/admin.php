@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin</title>
+  <title>Administrator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link
     rel="stylesheet"
@@ -14,7 +14,10 @@
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="shortcut icon" href="/bg-logo-img/logo.jpg" type="image/x-icon">
+  <link
+    rel="shortcut icon"
+    href="../bg-logo-img/logo.jpg"
+    type="image/x-icon" />
   <link rel="stylesheet" href="./assets//css/style.css">
   <link rel="stylesheet" href="./assets/css/admin.css">
   <link rel="stylesheet" href="./assets/css/media.css">
@@ -85,7 +88,7 @@
           margin: 4px 0;
         " />
 
-    <a href="#admin" onclick="showAdmin(); closeNav()"> <i class="fa fa-user"></i> Admin Details</a>
+    <a href="#admin" onclick="showAdmin(); closeNav()"> <i class="fa fa-user"></i> Administrator</a>
 
     <a href=""> <i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
 
@@ -101,7 +104,7 @@
   include_once "./config/dbconnect.php";
   ?>
 
-  <div id="main-content" class="container allContent-section py-4">
+  <div class="container allContent-section py-4">
     <div class="row cards-container">
       <div class="col-sm-3 card-container">
         <div class="card">
@@ -193,7 +196,7 @@
   if (isset($_GET['category']) && $_GET['category'] == "success") {
     echo '<script> alert("Category Successfully Added")</script>';
   } else if (isset($_GET['category']) && $_GET['category'] == "error") {
-    echo '<script> alert("Adding Unsuccess")</script>';
+    echo '<script> alert("Adding Unsuccess");</script>';
   }
   if (isset($_GET['size']) && $_GET['size'] == "success") {
     echo '<script> alert("Size Successfully Added")</script>';

@@ -15,7 +15,7 @@
       </thead>
       <?php
       include_once "../config/dbconnect.php";
-      $sql = "SELECT * from product_size_variation v, product p, sizes s WHERE p.product_id=v.product_id AND v.size_id=s.size_id ";
+      $sql = "SELECT * from product_size_variation v, product p, sizes s WHERE p.product_id=v.product_id AND v.size_id=s.size_id ORDER BY p.product_name ASC";
       $result = $conn->query($sql);
       $count = 1;
       if ($result->num_rows > 0) {

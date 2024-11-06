@@ -11,7 +11,7 @@ function showProductItems() {
 function showCategory() {
   $.ajax({
     url: "./adminView/viewCategories.php",
-    method: "post",
+    method: "POST",
     data: { record: 1 },
     success: function (data) {
       $(".allContent-section").html(data);
@@ -142,6 +142,7 @@ function addItems() {
     success: function (data) {
       alert("Product Added successfully.");
       $("form").trigger("reset");
+      showProductItems();
     },
   });
 }
@@ -214,19 +215,6 @@ function cartDelete(id) {
       alert("Cart Item Successfully deleted");
       $("form").trigger("reset");
       showMyCart();
-    },
-  });
-}
-
-function adminDelete(id) {
-  $.ajax({
-    url: "./controller/deleteAdminController.php",
-    method: "post",
-    data: { record: id },
-    success: function (data) {
-      alert("Items Successfully deleted");
-      $("form").trigger("reset");
-      showAdmin();
     },
   });
 }
