@@ -12,6 +12,11 @@ if (isset($_POST['admin-login'])) {
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();
+    $checkifcus = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND users.isAdmin = 0");
+    $checkifcus->bind_param("ss", $email,$password);
+    $checkifcus->execute();
+    $result1 = $checkifcus->get_result();
+
 
     if ($result->num_rows > 0) {
 
@@ -19,8 +24,15 @@ if (isset($_POST['admin-login'])) {
         $_SESSION['email'] = $row['email'];
         header("Location: ../../admin_panel/admin.php");
         exit();
-    } else {
+    } 
+    else {
+        if($result1->num_rows>0){
+            header("Location: ../index.php?login=error2");
+        }
+
+        else{
         header("Location: ../index.php?login=error");
+        }
     }
 
     $stmt->close();

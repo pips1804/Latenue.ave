@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    
+    header("Location: ../landing-page/index.php?login=required");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +34,12 @@
 </head>
 
 <body>
+  <!--
+
+  <a href="script/logout.php">LOGOUT</a>
+  <p><?php #echo $_SESSION['email']; ?></p>
+  
+  -->
   <header class="nav-container">
     <div class="logo-container">
       <p>LA</p>

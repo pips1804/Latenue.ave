@@ -87,7 +87,7 @@
 
     <a href="#admin" onclick="showAdmin(); closeNav()"> <i class="fa fa-user"></i> Admin Details</a>
 
-    <a href=""> <i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+    <a href="../customer-panel/script/logout.php"> <i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
 
   </div>
 

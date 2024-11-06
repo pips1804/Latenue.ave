@@ -10,6 +10,10 @@ if (isset($_POST['login'])) {
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();
+    $checkifadmin = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND users.isAdmin = 1");
+    $checkifadmin->bind_param("ss", $email,$password);
+    $checkifadmin->execute();
+    $result1 = $checkifadmin->get_result();
 
     if ($result->num_rows > 0) {
 
@@ -17,8 +21,15 @@ if (isset($_POST['login'])) {
         $_SESSION['email'] = $row['email'];
         header("Location: ../../customer-panel/mainpage.php");
         exit();
-    } else {
+    }
+    else {
+        if($result1->num_rows>0){
+            header("Location: ../index.php?login=error1");
+        }
+
+        else{
         header("Location: ../index.php?login=error");
+        }
     }
 
     $stmt->close();
