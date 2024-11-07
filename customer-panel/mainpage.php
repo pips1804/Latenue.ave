@@ -2,9 +2,9 @@
 session_start();
 
 if (!isset($_SESSION['email'])) {
-    
-    header("Location: ../landing-page/index.php?login=required");
-    exit();
+
+  header("Location: ../landing-page/index.php?login=required");
+  exit();
 }
 ?>
 
@@ -37,12 +37,15 @@ if (!isset($_SESSION['email'])) {
   <!--
 
   <a href="script/logout.php">LOGOUT</a>
-  <p><?php #echo $_SESSION['email']; ?></p>
+  <p><?php #echo $_SESSION['email']; 
+      ?></p>
   
   -->
   <header class="nav-container">
     <div class="logo-container">
-      <p>LA</p>
+      <a href="">
+        <p>LA</p>
+      </a>
     </div>
 
     <div class="searh-bar-container">
@@ -53,16 +56,16 @@ if (!isset($_SESSION['email'])) {
     </div>
 
     <div class="btn-container">
-      <button class="cart-btn">
+      <a href="#cart" onclick="showCart()">
         <li class="fa-solid fa-cart-shopping fa-xl"></li>
-      </button>
-      <button class="user-btn">
+      </a>
+      <a href="">
         <li class="fa-solid fa-user fa-xl"></li>
-      </button>
+      </a>
     </div>
   </header>
 
-  <main>
+  <main class="allContent-section-customer">
     <div class="best-selling-container">
       <p class="title-container">Top Products</p>
       <div class="item-cards-container">
@@ -153,7 +156,10 @@ if (!isset($_SESSION['email'])) {
       <div class="item-cards-container">
         <?php
         include_once "../admin_panel/config/dbconnect.php";
-        $sql = "SELECT * FROM product ORDER BY product.product_name ASC";
+        $sql = "SELECT p. * FROM product p 
+        JOIN product_size_variation ps ON ps.product_id = p.product_id 
+        GROUP BY p.product_id 
+        ORDER BY p.product_name ASC";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
@@ -165,7 +171,20 @@ if (!isset($_SESSION['email'])) {
                 style="object-fit: cover;">
               <div class="card-body">
                 <h6 class="card-title"><?= $row["product_name"] ?></h6>
-                <button class="btn add-to-cart-btn" type="submit">Add to cart</button>
+                <div class="buttons-container">
+                  <button
+                    class="btn view-btn"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#viewProduct"
+                    data-name="<?= $row["product_name"] ?>"
+                    data-desc="<?= $row["product_desc"] ?>"
+                    data-image="<?= $row["product_image"] ?>"
+                    id="view-button">
+                    View
+                  </button>
+                  <button class="btn add-to-cart" type="button" data-toggle="modal" data-target="#addToCart">Add to Cart</button>
+                </div>
               </div>
             </div>
         <?php
@@ -174,13 +193,33 @@ if (!isset($_SESSION['email'])) {
         ?>
       </div>
     </div>
-  </main>
 
-  <script src="script.js"></script>
-  <script
+    <div class="modal fade" id="viewProduct" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="product-details">
+          <div class="modal-header">
+            <h4 class="modal-title">Product Details</h4>
+          </div>
+          <div class="modal-body product-details-body">
+            <img id="modalProductImage" src="" alt="Product Image" class="prod-img">
+            <p id="modalProductName" class="prod-name"></p>
+            <p id="modalProductDescription" class="prod-desc"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default modal-close-btn" data-dismiss="modal" style="height:40px">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </main>
+  <!-- <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
@@ -188,6 +227,10 @@ if (!isset($_SESSION['email'])) {
   <script
     src="https://kit.fontawesome.com/28c1079d43.js"
     crossorigin="anonymous"></script>
+  <script src="../admin_panel/assets/js/ajaxWork.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

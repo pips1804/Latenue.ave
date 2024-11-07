@@ -26,7 +26,7 @@
 <body>
   <nav class="nav-bar">
     <p class="logo">LA</p>
-    <a href="" class="logout-icon"> <i class="fa-solid fa-right-from-bracket"></i></a>
+    <a href="../customer-panel/script/logout.php" class="logout-icon"> <i class="fa-solid fa-right-from-bracket"></i></a>
   </nav>
 
   <div class="sidebar" id="mySidebar" style="background-color: #6c4e31">

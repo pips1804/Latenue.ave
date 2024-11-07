@@ -83,6 +83,17 @@ function showAdmin() {
   });
 }
 
+function showCart() {
+  $.ajax({
+    url: "../customer-panel/customerView/viewCart.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section-customer").html(data);
+    },
+  });
+}
+
 function ChangeOrderStatus(id) {
   $.ajax({
     url: "./controller/updateOrderStatus.php",
