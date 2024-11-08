@@ -120,15 +120,6 @@ function ChangePay(id) {
   });
 }
 
-//add product data
-
-// $(document).ready(function () {
-//   $("#addProductForm").on("submit", function (e) {
-//     e.preventDefault(); // Prevent the form from submitting in the traditional way
-//     addItems(); // Call the addItems() function via AJAX
-//   });
-// });
-
 function addItems() {
   var p_name = $("#p_name").val();
   var p_desc = $("#p_desc").val();
