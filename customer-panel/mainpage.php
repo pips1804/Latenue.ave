@@ -62,6 +62,9 @@ if (!isset($_SESSION['email'])) {
       <a href="">
         <li class="fa-solid fa-user fa-xl"></li>
       </a>
+      <a href="">
+        <li class="fa-solid fa-right-from-bracket fa-xl"></li>
+      </a>
     </div>
   </header>
 
