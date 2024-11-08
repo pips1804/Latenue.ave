@@ -19,16 +19,18 @@ body {
   width: 100%;
   justify-content: space-around;
   align-items: center;
-  display: flex;
+  display: grid;
+  grid-template-columns: 480px 2fr 1fr;
   z-index: 999;
   top: 0;
 }
 
 .logo-container p {
   color: #ffeac5;
-  margin: 0;
-  font-size: 36px;
-  font-weight: bold;
+  margin: 0 150px;
+  font-size: 32px;
+  font-weight: 600;
+  width: 300px;
 }
 
 .logo-container a {

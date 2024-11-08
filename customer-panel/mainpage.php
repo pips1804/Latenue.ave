@@ -44,7 +44,9 @@ if (!isset($_SESSION['email'])) {
   <header class="nav-container">
     <div class="logo-container">
       <a href="">
-        <p>LA</p>
+        <p>Hello, <?php
+                  echo $_SESSION['first_name'];
+                  ?>!</p>
       </a>
     </div>
 
@@ -62,7 +64,7 @@ if (!isset($_SESSION['email'])) {
       <a href="">
         <li class="fa-solid fa-user fa-xl"></li>
       </a>
-      <a href="">
+      <a href="./script/logout.php">
         <li class="fa-solid fa-right-from-bracket fa-xl"></li>
       </a>
     </div>
