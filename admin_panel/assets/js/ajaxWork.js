@@ -163,6 +163,7 @@ function itemEditForm(id) {
 
 //update product after submit
 function updateItems() {
+  a;
   var product_id = $("#product_id").val();
   var p_name = $("#p_name").val();
   var p_desc = $("#p_desc").val();
@@ -208,6 +209,24 @@ function itemDelete(id) {
 }
 
 //delete cart data
+// function addToCart() {
+//   var v_id = $("#variation_id").val();
+//   var fd = new FormData();
+//   fd.append("variation_id", v_id);
+
+//   $.ajax({
+//     url: "../customer-panel/controller/addToCartController.php",
+//     method: "post",
+//     data: fd,
+//     processData: false,
+//     contentType: false,
+//     success: function (data) {
+//       alert("Product added to cart successfully.");
+//       $("form").trigger("reset");
+//     },
+//   });
+// }
+
 function cartDelete(id) {
   $.ajax({
     url: "./controller/deleteCartController.php",

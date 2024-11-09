@@ -18,19 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  addToCartButton.forEach((button) => {
-    button.addEventListener("click", function () {
-      const productName = this.getAttribute("data-name");
-      const productImage = this.getAttribute("data-image");
-      const productId = this.getAttribute("data-id");
+  // addToCartButton.forEach((button) => {
+  //   button.addEventListener("click", function () {
+  //     const productName = this.getAttribute("data-name");
+  //     const productImage = this.getAttribute("data-image");
+  //     const productId = this.getAttribute("data-id");
 
-      console.log(productId);
+  //     console.log(productId);
 
-      document.getElementById("modalAdcProductName").textContent = productName;
-      document.getElementById("modalAdcProductImage").src =
-        "../admin_panel" + productImage;
-    });
-  });
+  //     document.getElementById("modalAdcProductName").textContent = productName;
+  //     document.getElementById("modalAdcProductImage").src =
+  //       "../admin_panel" + productImage;
+  //   });
+  // });
 });
 
 function updatePrice(productId) {
@@ -39,19 +39,10 @@ function updatePrice(productId) {
   // Get the selected option
   const selectedOption = selectElement.options[selectElement.selectedIndex];
 
-  // Check if the selectedOption is valid
-  console.log("Selected option:", selectedOption);
-
   if (selectedOption) {
     // Get the unit price and variation ID from the data attributes
     const unitPrice = selectedOption.getAttribute("data-price");
     const variationId = selectedOption.getAttribute("data-variation-id");
-
-    // Log if variationId exists
-    console.log(
-      "Variation ID exists:",
-      variationId !== null && variationId !== undefined
-    );
 
     // Update the price display
     document
@@ -61,8 +52,12 @@ function updatePrice(productId) {
       : "$0.00";
 
     // Store the selected variation ID in the hidden input
-    document.getElementsByClassName("variationId-" + productId).value =
-      variationId;
+    const hiddenInput = document.querySelector(".variationId-" + productId);
+    if (hiddenInput) {
+      hiddenInput.value = variationId;
+    } else {
+      console.error("Error: Hidden input not found for product " + productId);
+    }
 
     // Log the variation_id to the console
     console.log(

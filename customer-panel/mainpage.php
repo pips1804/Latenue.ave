@@ -178,55 +178,56 @@ if (!isset($_SESSION['email'])) {
               <div class="card-body">
                 <h6 class="card-title"><?= $row["product_name"] ?></h6>
 
-                <div class="size-section">
-                  <div class="form-group">
-                    <label for="sizeSelect-<?= $productId ?>">Size:</label>
-                    <select id="sizeSelect-<?= $productId ?>" name="size" onchange="updatePrice('<?= $productId ?>')">
-                      <option disabled selected>Select size</option>
-                      <?php
-                      $sizeSql = "SELECT ps.size_id, s.size_name, ps.unit_price, ps.variation_id 
+                <form enctype='multipart/form-data' action="controller/addToCartController.php" method="POST">
+                  <div class="size-section">
+                    <div class="form-group">
+                      <label for="sizeSelect-<?= $productId ?>">Size:</label>
+                      <select id="sizeSelect-<?= $productId ?>" name="size" onchange="updatePrice('<?= $productId ?>')">
+                        <option disabled selected>Select size</option>
+                        <?php
+                        $sizeSql = "SELECT ps.size_id, s.size_name, ps.unit_price, ps.variation_id 
               FROM product_size_variation ps
               JOIN sizes s ON ps.size_id = s.size_id 
               WHERE ps.product_id = '$productId'";
-                      $sizeResult = $conn->query($sizeSql);
-                      if ($sizeResult->num_rows > 0) {
-                        while ($sizeRow = $sizeResult->fetch_assoc()) {
-                          echo "<option value='" . $sizeRow['size_id'] . "' data-price='" . $sizeRow['unit_price'] . "' data-variation-id='" . $sizeRow['variation_id'] . "'>" . $sizeRow['size_name'] . "</option>";
+                        $sizeResult = $conn->query($sizeSql);
+                        if ($sizeResult->num_rows > 0) {
+                          while ($sizeRow = $sizeResult->fetch_assoc()) {
+                            echo "<option value='" . $sizeRow['size_id'] . "' data-price='" . $sizeRow['unit_price'] . "' data-variation-id='" . $sizeRow['variation_id'] . "'>" . $sizeRow['size_name'] . "</option>";
+                          }
+                        } else {
+                          echo "<option value=''>No sizes available</option>";
                         }
-                      } else {
-                        echo "<option value=''>No sizes available</option>";
-                      }
-                      ?>
-                    </select>
-                    <!-- Display the price -->
-                    <p id="priceDisplay-<?= $productId ?>">Price: <span class="price-value"></span></p>
+                        ?>
+                      </select>
+                      <!-- Display the price -->
+                      <p id="priceDisplay-<?= $productId ?>">Price: <span class="price-value"></span></p>
 
-                    <input type="hidden" class="variationId-<?= $productId ?>" id="variation_id" value="">
+                      <!-- Get the variation id -->
+                      <input type="hidden" class="variationId-<?= $productId ?>" id="variation_id" value="" name="v_id">
+                    </div>
+
                   </div>
 
-                  <!-- <div class="form-group">
-                    <label for="name">Price :</label>
-                  </div> -->
-                </div>
-
-                <div class="buttons-container">
-                  <button
-                    class="btn view-btn"
-                    type="button"
-                    data-toggle="modal"
-                    data-target="#viewProduct"
-                    data-name="<?= $row["product_name"] ?>"
-                    data-desc="<?= $row["product_desc"] ?>"
-                    data-image="<?= $row["product_image"] ?>"
-                    id="view-button">
-                    View
-                  </button>
-                  <button
-                    class="btn add-to-cart"
-                    type="button">
-                    Add to Cart
-                  </button>
-                </div>
+                  <div class="buttons-container form-group">
+                    <button
+                      class="btn view-btn"
+                      type="button"
+                      data-toggle="modal"
+                      data-target="#viewProduct"
+                      data-name="<?= $row["product_name"] ?>"
+                      data-desc="<?= $row["product_desc"] ?>"
+                      data-image="<?= $row["product_image"] ?>"
+                      id="view-button">
+                      View
+                    </button>
+                    <button
+                      class="btn add-to-cart"
+                      type="submit"
+                      name="upload">
+                      Add to Cart
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
         <?php
@@ -256,6 +257,14 @@ if (!isset($_SESSION['email'])) {
       </div>
     </div>
   </main>
+
+  <?php
+  if (isset($_GET['cart']) && $_GET['cart'] == "success") {
+    echo '<script> alert("Product Successfully Added to Cart")</script>';
+  } else if (isset($_GET['cart']) && $_GET['cart'] == "error") {
+    echo '<script> alert("Adding Unsuccess");</script>';
+  }
+  ?>
   <!-- <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
