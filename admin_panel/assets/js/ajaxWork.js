@@ -229,13 +229,13 @@ function itemDelete(id) {
 
 function cartDelete(id) {
   $.ajax({
-    url: "./controller/deleteCartController.php",
+    url: "../customer-panel/controller/deleteCartController.php",
     method: "post",
     data: { record: id },
     success: function (data) {
       alert("Cart Item Successfully deleted");
       $("form").trigger("reset");
-      showMyCart();
+      showCart();
     },
   });
 }
@@ -397,23 +397,51 @@ function search(id) {
 
 function quantityPlus(id) {
   $.ajax({
-    url: "./controller/addQuantityController.php",
+    url: "../customer-panel/controller/addQuantityController.php",
     method: "post",
     data: { record: id },
     success: function (data) {
-      $("form").trigger("reset");
-      showMyCart();
+      // $("form").trigger("reset");
+      // showMyCart();
+      const response = JSON.parse(data);
+      if (response.status === "success") {
+        $("#quantity-" + id).text(response.quantity);
+
+        // Get the unit price from the DOM and calculate the new total price
+        const unitPrice = parseFloat($("#unit-price-" + id).text());
+        const newTotalPrice = (unitPrice * response.quantity).toFixed(2);
+
+        // Update the total price in the DOM
+        $("#total-price-" + id).text(newTotalPrice);
+      } else {
+        alert(response.message);
+      }
+      showCart();
     },
   });
 }
 function quantityMinus(id) {
   $.ajax({
-    url: "./controller/subQuantityController.php",
+    url: "../customer-panel/controller/subQuantityController.php",
     method: "post",
     data: { record: id },
     success: function (data) {
-      $("form").trigger("reset");
-      showMyCart();
+      // $("form").trigger("reset");
+      // showMyCart();
+      const response = JSON.parse(data);
+      if (response.status === "success") {
+        $("#quantity-" + id).text(response.quantity);
+
+        // Get the unit price from the DOM and calculate the new total price
+        const unitPrice = parseFloat($("#unit-price-" + id).text());
+        const newTotalPrice = (unitPrice * response.quantity).toFixed(2);
+
+        // Update the total price in the DOM
+        $("#total-price-" + id).text(newTotalPrice);
+      } else {
+        alert(response.message);
+      }
+      showCart();
     },
   });
 }
