@@ -22,10 +22,14 @@ if (isset($_POST['login'])) {
         $_SESSION['first_name'] = $row['first_name'];
         header("Location: ../../customer-panel/mainpage.php");
         exit();
-    } else {
+    } 
+    else {
+
         if ($result1->num_rows > 0) {
+            #header("Location: ../../admin_panel/admin.php");
             header("Location: ../index.php?login=error1");
-        } else {
+        } 
+        else {
             header("Location: ../index.php?login=error");
         }
     }

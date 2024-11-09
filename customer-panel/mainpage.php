@@ -34,13 +34,6 @@ if (!isset($_SESSION['email'])) {
 </head>
 
 <body>
-  <!--
-
-  <a href="script/logout.php">LOGOUT</a>
-  <p><?php #echo $_SESSION['email']; 
-      ?></p>
-  
-  -->
   <header class="nav-container">
     <div class="logo-container">
       <a href="">
