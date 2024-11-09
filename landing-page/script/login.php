@@ -15,9 +15,11 @@ if (isset($_POST['login'])) {
     $checkifadmin->execute();
     $result1 = $checkifadmin->get_result();
 
+
     if ($result->num_rows > 0) {
 
         $row = $result->fetch_assoc();
+        $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['first_name'] = $row['first_name'];
         header("Location: ../../customer-panel/mainpage.php");
