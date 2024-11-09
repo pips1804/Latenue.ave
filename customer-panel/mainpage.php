@@ -161,14 +161,47 @@ if (!isset($_SESSION['email'])) {
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
+            $productId = $row['product_id'];
         ?>
-            <div class="card product" style="width: 14rem; height: 320px;">
+            <div class="card product" style="width: 14rem; height: 380px;">
               <img
                 src='../admin_panel<?= $row["product_image"] ?>'
                 height='200px'
                 style="object-fit: cover;">
               <div class="card-body">
                 <h6 class="card-title"><?= $row["product_name"] ?></h6>
+
+                <div class="size-section">
+                  <div class="form-group">
+                    <label for="sizeSelect-<?= $productId ?>">Size:</label>
+                    <select id="sizeSelect-<?= $productId ?>" name="size" onchange="updatePrice('<?= $productId ?>')">
+                      <option disabled selected>Select size</option>
+                      <?php
+                      $sizeSql = "SELECT ps.size_id, s.size_name, ps.unit_price, ps.variation_id 
+              FROM product_size_variation ps
+              JOIN sizes s ON ps.size_id = s.size_id 
+              WHERE ps.product_id = '$productId'";
+                      $sizeResult = $conn->query($sizeSql);
+                      if ($sizeResult->num_rows > 0) {
+                        while ($sizeRow = $sizeResult->fetch_assoc()) {
+                          echo "<option value='" . $sizeRow['size_id'] . "' data-price='" . $sizeRow['unit_price'] . "' data-variation-id='" . $sizeRow['variation_id'] . "'>" . $sizeRow['size_name'] . "</option>";
+                        }
+                      } else {
+                        echo "<option value=''>No sizes available</option>";
+                      }
+                      ?>
+                    </select>
+                    <!-- Display the price -->
+                    <p id="priceDisplay-<?= $productId ?>">Price: <span class="price-value"></span></p>
+
+                    <input type="hidden" class="variationId-<?= $productId ?>" id="variation_id" value="">
+                  </div>
+
+                  <!-- <div class="form-group">
+                    <label for="name">Price :</label>
+                  </div> -->
+                </div>
+
                 <div class="buttons-container">
                   <button
                     class="btn view-btn"
@@ -181,7 +214,11 @@ if (!isset($_SESSION['email'])) {
                     id="view-button">
                     View
                   </button>
-                  <button class="btn add-to-cart" type="button" data-toggle="modal" data-target="#addToCart">Add to Cart</button>
+                  <button
+                    class="btn add-to-cart"
+                    type="button">
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </div>
@@ -211,8 +248,6 @@ if (!isset($_SESSION['email'])) {
 
       </div>
     </div>
-
-
   </main>
   <!-- <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

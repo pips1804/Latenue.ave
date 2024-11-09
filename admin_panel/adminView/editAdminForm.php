@@ -1,6 +1,6 @@
 <div class="container p-5 edit-container">
 
-    <p class="section-title edit-title">Edit Variation Detail</p>
+    <p class="section-title edit-title">Edit Administrator Details</p>
     <?php
     include_once "../config/dbconnect.php";
     $ID = $_POST['record'];
