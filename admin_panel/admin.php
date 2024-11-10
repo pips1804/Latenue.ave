@@ -90,6 +90,8 @@
 
     <a href="#admin" onclick="showAdmin(); closeNav()"> <i class="fa fa-user"></i> Administrator</a>
 
+    <a href="#audit-trail" onclick="showAudit(); closeNav()"> <i class="fa-solid fa-newspaper"></i> Audit Trail Log</a>
+
     <a href="../customer-panel/script/logout.php"> <i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
 
   </div>

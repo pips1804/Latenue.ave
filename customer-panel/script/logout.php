@@ -2,7 +2,8 @@
 session_start();
 include '../../admin_panel/config/dbconnect.php';
 
-function logLogout() {
+function logLogout()
+{
     global $conn;
 
     if (isset($_SESSION['log_id'])) {
@@ -12,15 +13,12 @@ function logLogout() {
         $stmt->execute();
 
         unset($_SESSION['log_id']);
-        session_unset();  
+        session_unset();
         session_destroy();
         header("Location: ../../landing-page/index.php?logout=success");
         exit();
-        
     }
 }
 
 logLogout();
 echo "function not run!";
-
-?>

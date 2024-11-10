@@ -2,16 +2,17 @@
 session_start();
 include '../../admin_panel/config/dbconnect.php';
 
-function logLogin($user_id) {
+function logLogin($user_id)
+{
     global $conn;
 
     $ipAddress = $_SERVER['REMOTE_ADDR'];
     $sessionId = session_id();
- 
+
     $log = $conn->prepare("INSERT INTO audit_trail_log (user_id, ip_address, session_id) VALUES (?, ?, ?)");
     $log->bind_param("iss", $user_id, $ipAddress, $sessionId);
     $log->execute();
-    
+
     $_SESSION['log_id'] = $conn->insert_id;
 }
 
@@ -38,14 +39,12 @@ if (isset($_POST['login'])) {
         logLogin($row['user_id']);
         header("Location: ../../customer-panel/mainpage.php");
         exit();
-    } 
-    else {
+    } else {
 
         if ($result1->num_rows > 0) {
             #header("Location: ../../admin_panel/admin.php");
             header("Location: ../index.php?login=error1");
-        } 
-        else {
+        } else {
             header("Location: ../index.php?login=error");
         }
     }

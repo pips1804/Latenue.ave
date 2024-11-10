@@ -186,29 +186,24 @@
   <?php
   if (isset($_GET['login']) && $_GET['login'] == "error") {
     echo '<script> alert("Incorrect Email or Password")</script>';
-  }
-  else if (isset($_GET['login']) && $_GET['login'] == "required") {
+  } else if (isset($_GET['login']) && $_GET['login'] == "required") {
     echo '<script> alert("Login is required to view this page")</script>';
-  }
-  else if (isset($_GET['login']) && $_GET['login'] == "error1") {
+  } else if (isset($_GET['login']) && $_GET['login'] == "error1") {
     echo '<script> alert("You are using an admin account!")</script>';
-  }
-  else if (isset($_GET['login']) && $_GET['login'] == "error2") {
+  } else if (isset($_GET['login']) && $_GET['login'] == "error2") {
     echo '<script> alert("You are using an customer account!")</script>';
   }
   if (isset($_GET['signup']) && $_GET['signup'] == "success") {
     echo '<script> alert("Signup Succesfully")</script>';
-  } 
-  else if (isset($_GET['signup']) && $_GET['signup'] == "pwnotmatched") {
+  } else if (isset($_GET['signup']) && $_GET['signup'] == "pwnotmatched") {
     echo '<script> alert("Password not matched!")</script>';
-  } 
-  else if (isset($_GET['signup']) && $_GET['signup'] == "error") {
+  } else if (isset($_GET['signup']) && $_GET['signup'] == "error") {
     echo '<script> alert("Email Already Exist!")</script>';
   }
   if (isset($_GET['logout']) && $_GET['logout'] == "success") {
     echo '<script> alert("Logout Succesfully")</script>';
-  } 
-  
+  }
+
 
   ?>
 
