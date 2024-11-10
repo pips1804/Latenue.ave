@@ -34,12 +34,22 @@ if (!isset($_SESSION['email'])) {
 </head>
 
 <body>
+  <?php
+  include_once "../admin_panel/config/dbconnect.php";
+  $user_id = $_SESSION['user_id'];
+  $count = 0;
+
+  $sql = "SELECT COUNT(*) AS cart_count FROM cart WHERE user_id = $user_id";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $count = $row['cart_count'];
+  }
+  ?>
   <header class="nav-container">
     <div class="logo-container">
       <a href="">
-        <p>Hello, <?php
-                  echo $_SESSION['first_name'];
-                  ?>!</p>
+        <p>Hello, <?= $_SESSION['first_name'] ?>!</p>
       </a>
     </div>
 
@@ -51,13 +61,18 @@ if (!isset($_SESSION['email'])) {
     </div>
 
     <div class="btn-container">
-      <a href="#cart" onclick="showCart()">
-        <li class="fa-solid fa-cart-shopping fa-xl"></li>
-      </a>
+      <div class="add-to-cart-btn">
+        <a href="#cart" onclick="showCart()">
+          <li class="fa-solid fa-cart-shopping fa-xl"></li>
+        </a>
+        <div class="cart-count-container">
+          <p class="cart-count"><?= $count ?></p>
+        </div>
+      </div>
       <a href="">
         <li class="fa-solid fa-user fa-xl"></li>
       </a>
-      <a href="./script/logout.php">
+      <a href="" data-toggle="modal" data-target="#viewLogOut">
         <li class="fa-solid fa-right-from-bracket fa-xl"></li>
       </a>
     </div>
@@ -171,6 +186,7 @@ if (!isset($_SESSION['email'])) {
               <div class="card-body">
                 <h6 class="card-title"><?= $row["product_name"] ?></h6>
 
+
                 <form enctype='multipart/form-data' action="controller/addToCartController.php" method="POST">
                   <div class="size-section">
                     <div class="form-group">
@@ -243,6 +259,25 @@ if (!isset($_SESSION['email'])) {
             <p id="modalProductDescription" class="prod-desc"></p>
           </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-default modal-close-btn" data-dismiss="modal" style="height:40px">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="viewLogOut" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="product-details modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Log Out</h4>
+          </div>
+          <div class="modal-body product-details-body">
+            <p class="log-out-warning">Are you sure you want to log out?</p>
+          </div>
+          <div class="modal-footer">
+            <a href="./script/logout.php" class="btn btn-default" style="height:40px">Log Out</a>
             <button type="button" class="btn btn-default modal-close-btn" data-dismiss="modal" style="height:40px">Close</button>
           </div>
         </div>

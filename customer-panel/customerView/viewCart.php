@@ -6,8 +6,8 @@ session_start();
 
 <div class="cart-section">
     <p class="cart-title">Your Cart</p>
-    <div class="cart-container">
-        <table class="table">
+    <div class="cart-table-container scrollable-table">
+        <table class="">
             <thead>
                 <tr>
                     <th class="text-center">Product Image</th>
@@ -40,9 +40,9 @@ session_start();
                             <td class="text-center" id="unit-price-<?= $cart_id ?>">₱<?= number_format($row["unit_price"], 2) ?></td>
                             <td class="text-center" id="total-price-<?= $cart_id ?>">₱<?= number_format($total_price, 2) ?></td>
                             <td class="text-center">
-                                <button onclick="quantityPlus(<?= $cart_id ?>)" class="btn btn-success">+</button>
-                                <button onclick="quantityMinus(<?= $cart_id ?>)" class="btn btn-danger">-</button>
-                                <button class="btn" onclick="cartDelete(<?= $cart_id ?>);">Delete</button>
+                                <button onclick="quantityPlus(<?= $cart_id ?>)" class="btn btn-success cart-btn">+</button>
+                                <button onclick="quantityMinus(<?= $cart_id ?>)" class="btn btn-danger cart-btn">-</button>
+                                <button class="btn cart-btn" onclick="cartDelete(<?= $cart_id ?>);">Delete</button>
                             </td>
                         </tr>
                 <?php
