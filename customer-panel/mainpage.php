@@ -184,7 +184,7 @@ if (!isset($_SESSION['email'])) {
                 height='200px'
                 style="object-fit: cover;">
               <div class="card-body">
-                <h6 class="card-title"><?= $row["product_name"] ?></h6>e
+                <h6 class="card-title"><?= $row["product_name"] ?></h6>
 
 
                 <form enctype='multipart/form-data' action="controller/addToCartController.php" method="POST">
