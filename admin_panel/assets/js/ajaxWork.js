@@ -105,6 +105,28 @@ function showAudit() {
   });
 }
 
+function showBank() {
+    $.ajax({
+      url: "./adminView/viewBank.php",
+      method: "post",
+      data: { record: 1 },
+      success: function (data) {
+        $(".allContent-section").html(data);
+      },
+    });
+  }
+
+  function showEWallet() {
+    $.ajax({
+      url: "./adminView/viewEwallet.php",
+      method: "post",
+      data: { record: 1 },
+      success: function (data) {
+        $(".allContent-section").html(data);
+      },
+    });
+  }
+
 function ChangeOrderStatus(id) {
   $.ajax({
     url: "./controller/updateOrderStatus.php",
@@ -272,6 +294,19 @@ function categoryDelete(id) {
       alert("Category Successfully deleted");
       $("form").trigger("reset");
       showCategory();
+    },
+  });
+}
+
+function bankDelete(id) {
+  $.ajax({
+    url: "./controller/bankDeleteController.php",
+    method: "post",
+    data: { record: id },
+    success: function (data) {
+      alert("Bank Details Successfully deleted");
+      $("form").trigger("reset");
+    showBank();
     },
   });
 }

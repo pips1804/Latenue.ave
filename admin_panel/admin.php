@@ -47,7 +47,7 @@ if (!isset($_SESSION['email'])) {
                 height="120"
                 alt=""
                 class="admin-profile" />
-            <h5 style="margin-top: 10px">Hello, Admin!</h5>
+            <h5 style="margin-top: 10px">Hello, <?= $_SESSION['first_name'] ?>!</h5>
         </div>
 
         <hr
@@ -82,6 +82,14 @@ if (!isset($_SESSION['email'])) {
         <div class="inventory-container" style="display: none; margin-left: 20px;">
             <a href="#products" onclick="showProductItems(); closeNav()"><i class="fa fa-th"></i> Products</a>
             <a href="#productsizes" onclick="showProductSizes(); closeNav()"><i class="fa fa-th-list"></i> Product Sizes</a>
+        </div>
+
+        <a href="javascript:void(0)" class="dropdown-btn" onclick="togglePaymentDropdown()">
+            <i class="fa fa-money-bills"></i> Payments <i class="fa fa-caret-down"></i>
+        </a>
+        <div class="bank-container" style="display: none; margin-left: 20px;">
+            <a href="#products" onclick="showBank(); closeNav()"><i class="fa fa-credit-card"></i> Bank Account</a>
+            <a href="#productsizes" onclick="showEWallet(); closeNav()"><i class="fa fa-wallet"></i> E-Wallet</a>
         </div>
 
         <a href="#customers" onclick="showCustomers(); closeNav()"><i class="fa fa-users"></i> Customers</a>
