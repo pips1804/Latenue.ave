@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $checkifuser = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND users.isAdmin = 0");
+    $checkifuser = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND users.isAdmin = 0 AND email_verified_at IS NOT NULL");
     $checkifuser->bind_param("ss", $email, $password);
     $checkifuser->execute();
     $result = $checkifuser->get_result();
