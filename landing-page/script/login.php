@@ -24,10 +24,16 @@ if (isset($_POST['login'])) {
     $checkifuser->bind_param("ss", $email, $password);
     $checkifuser->execute();
     $result = $checkifuser->get_result();
+
     $checkifadmin = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND users.isAdmin = 1");
     $checkifadmin->bind_param("ss", $email, $password);
     $checkifadmin->execute();
     $result1 = $checkifadmin->get_result();
+
+    $checkifverified = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND users.isAdmin = 0 AND email_verified_at IS NULL");
+    $checkifverified->bind_param("ss", $email, $password);
+    $checkifverified->execute();
+    $result2 = $checkifverified->get_result();
 
 
     if ($result->num_rows > 0) {
@@ -44,7 +50,11 @@ if (isset($_POST['login'])) {
         if ($result1->num_rows > 0) {
             #header("Location: ../../admin_panel/admin.php");
             header("Location: ../index.php?login=error1");
-        } else {
+        }
+        elseif($result1->num_rows > 0){
+            header( "Location: ../index.php?login=notverified");
+        }
+         else {
             header("Location: ../index.php?login=error");
         }
     }

@@ -219,6 +219,8 @@
         echo '<script> alert("You are using an admin account!")</script>';
     } else if (isset($_GET['login']) && $_GET['login'] == "error2") {
         echo '<script> alert("You are using an customer account!")</script>';
+    } else if (isset($_GET['login']) && $_GET['login'] == "notverified") {
+        echo '<script> alert("You need to verify your email!")</script>';
     }
     if (isset($_GET['signup']) && $_GET['signup'] == "success") {
         echo '<script> alert("Signup Succesfully")</script>';
