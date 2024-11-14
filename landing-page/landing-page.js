@@ -56,6 +56,17 @@ function displayAdminLogIn() {
   }, 0);
 }
 
+// displaying verify email form
+function verifyEmailForm() {
+  const verifyEmailForm = document.getElementById("verify-email");
+
+  verifyEmailForm.style.display = "block";
+
+  setTimeout(() => {
+    document.addEventListener("click", hideFormOnClickOutside);
+  }, 0);
+}
+
 // hiding customer or admin sign up/log in form
 function hideFormOnClickOutside(event) {
   const cusSignUpForm = document.getElementById("customer-sign-up");
@@ -63,6 +74,8 @@ function hideFormOnClickOutside(event) {
   const cusLogInForm = document.getElementById("customer-log-in");
   const adminLogInForm = document.getElementById("admin-log-in");
   const triggerButton2 = document.getElementsByClassName("log-in-button");
+  const verifyEmailForm = document.getElementById("verify-email");
+  const triggerButton3 = document.getElementsByClassName("verify-button");
 
   if (!cusSignUpForm.contains(event.target) && event.target !== triggerButton) {
     cusSignUpForm.style.display = "none";
@@ -79,29 +92,13 @@ function hideFormOnClickOutside(event) {
     cusLogInForm.style.display = "none";
     document.removeEventListener("click", hideFormOnClickOutside);
   }
+  if (!verifyEmailForm.contains(event.target) && event.target !== triggerButton3) {
+    verifyEmailForm.style.display = "none";
+    document.removeEventListener("click", hideFormOnClickOutside);
+  }
 }
 
 // show password functionality
-function adminSignUp() {
-  const adminSignUpPass = document.getElementById("adminSignUpPass");
-
-  if (adminSignUpPass.type == "password") {
-    adminSignUpPass.type = "text";
-  } else {
-    adminSignUpPass.type = "password";
-  }
-}
-
-function adminSignUpRep() {
-  const adminSignUpRepPass = document.getElementById("adminSignUpRepPass");
-
-  if (adminSignUpRepPass.type == "password") {
-    adminSignUpRepPass.type = "text";
-  } else {
-    adminSignUpRepPass.type = "password";
-  }
-}
-
 function cusSignUp() {
   const cusSignUpPass = document.getElementById("cusSignUpPass");
 
