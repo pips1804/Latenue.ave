@@ -59,6 +59,15 @@
       comfort of their homes.
     </div>
 
+    <!-- Temporary Shit ---------------------------- -->
+
+    <form method="POST" action="script/verify-code.php">
+    <input type="text" name="verification_code" placeholder="Enter verification code" required />
+    <input type="submit" name="verify" value="Verify">
+    </form>
+    
+    <!-- ------------------------------------------ -->
+
     <div class="customer-signup-form-container" id="customer-sign-up">
       <p>Sign Up as Customer</p>
       <form action="script/signup.php" class="customer-sign-up" method="post">
@@ -202,6 +211,15 @@
   }
   if (isset($_GET['logout']) && $_GET['logout'] == "success") {
     echo '<script> alert("Logout Succesfully")</script>';
+  }
+  if (isset($_GET['code']) && $_GET['code'] == "success") {
+    echo '<script> alert("Code Sent Succesfully!")</script>';
+  }
+  else if (isset($_GET['code']) && $_GET['code'] == "matched") {
+    echo '<script> alert("Email Succesfully Verified")</script>';
+  }
+  else if (isset($_GET['code']) && $_GET['code'] == "notmatched") {
+    echo '<script> alert("Incorrect verification Code!")</script>';
   }
 
 

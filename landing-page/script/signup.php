@@ -1,6 +1,7 @@
 <?php
 
 include '../../admin_panel/config/dbconnect.php';
+session_start();
 
 if (isset($_POST['sign-up'])) {
     $firstName = $_POST['first-name'];
@@ -32,7 +33,12 @@ if (isset($_POST['sign-up'])) {
                                         VALUES ('$firstName', '$lastName', '$email', '$phonenumber', '$password', '$address_id')";
 
                 if ($conn->query($insertUserQuery) === TRUE) {
-                    header("Location: ../index.php?signup=success");
+
+                    $user_id = $conn->insert_id;
+                    $_SESSION['first-name'] = $firstName;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['user_id'] = $user_id;
+                    header("Location: send-code.php");
                 } else {
                     echo "Error: " . $conn->error;
                 }
