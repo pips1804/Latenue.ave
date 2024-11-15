@@ -106,26 +106,26 @@ function showAudit() {
 }
 
 function showBank() {
-    $.ajax({
-      url: "./adminView/viewBank.php",
-      method: "post",
-      data: { record: 1 },
-      success: function (data) {
-        $(".allContent-section").html(data);
-      },
-    });
-  }
+  $.ajax({
+    url: "./adminView/viewBank.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
 
-  function showEWallet() {
-    $.ajax({
-      url: "./adminView/viewEwallet.php",
-      method: "post",
-      data: { record: 1 },
-      success: function (data) {
-        $(".allContent-section").html(data);
-      },
-    });
-  }
+function showEWallet() {
+  $.ajax({
+    url: "./adminView/viewEwallet.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
 
 function ChangeOrderStatus(id) {
   $.ajax({
@@ -182,6 +182,37 @@ function addItems() {
   });
 }
 
+function addEWallet() {
+  var e_name = $("#e_name").val();
+  var f_name = $("#first_name").val();
+  var m_name = $("#middle_name").val();
+  var l_name = $("#last_name").val();
+  var e_num = $("#e_number").val();
+  var upload = $("#upload").val();
+  var file = $("#file")[0].files[0];
+
+  var fd = new FormData();
+  fd.append("e_name", e_name);
+  fd.append("f_name", f_name);
+  fd.append("m_name", m_name);
+  fd.append("l_name", l_name);
+  fd.append("e_num", e_num);
+  fd.append("file", file);
+  fd.append("upload", upload);
+  $.ajax({
+    url: "./controller/addEWalletController.php",
+    method: "post",
+    data: fd,
+    processData: false,
+    contentType: false,
+    success: function (data) {
+      alert("EWallet Added successfully.");
+      $("form").trigger("reset");
+      showEWallet();
+    },
+  });
+}
+
 //edit product data
 function itemEditForm(id) {
   $.ajax({
@@ -194,9 +225,19 @@ function itemEditForm(id) {
   });
 }
 
+function eWalletEditForm(id) {
+  $.ajax({
+    url: "./adminView/editEWalletForm.php",
+    method: "post",
+    data: { record: id },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
+
 //update product after submit
 function updateItems() {
-  a;
   var product_id = $("#product_id").val();
   var p_name = $("#p_name").val();
   var p_desc = $("#p_desc").val();
@@ -227,6 +268,39 @@ function updateItems() {
   });
 }
 
+function updateEWallet() {
+  var e_id = $("#e_wallet_id").val();
+  var e_name = $("#e_name").val();
+  var f_name = $("#first_name").val();
+  var m_name = $("#middle_name").val();
+  var l_name = $("#last_name").val();
+  var e_num = $("#e_number").val();
+  var existingImage = $("#existingImage").val();
+  var newImage = $("#newImage")[0].files[0];
+
+  var fd = new FormData();
+  fd.append("e_id", e_id);
+  fd.append("e_name", e_name);
+  fd.append("f_name", f_name);
+  fd.append("m_name", m_name);
+  fd.append("l_name", l_name);
+  fd.append("e_num", e_num);
+  fd.append("existingImage", existingImage);
+  fd.append("newImage", newImage);
+  $.ajax({
+    url: "./controller/updateEWalletController.php",
+    method: "post",
+    data: fd,
+    processData: false,
+    contentType: false,
+    success: function (data) {
+      alert("EWallet Updated successfully.");
+      $("form").trigger("reset");
+      showEWallet();
+    },
+  });
+}
+
 //delete product data
 function itemDelete(id) {
   $.ajax({
@@ -237,6 +311,19 @@ function itemDelete(id) {
       alert("Items Successfully deleted");
       $("form").trigger("reset");
       showProductItems();
+    },
+  });
+}
+
+function eWalletDelete(id) {
+  $.ajax({
+    url: "./controller/deleteEWalletController.php",
+    method: "post",
+    data: { record: id },
+    success: function (data) {
+      alert("EWallet Successfully deleted");
+      $("form").trigger("reset");
+      showEWallet();
     },
   });
 }
@@ -306,7 +393,7 @@ function bankDelete(id) {
     success: function (data) {
       alert("Bank Details Successfully deleted");
       $("form").trigger("reset");
-    showBank();
+      showBank();
     },
   });
 }
@@ -375,6 +462,17 @@ function adminEditForm(id) {
   });
 }
 
+function bankEditForm(id) {
+  $.ajax({
+    url: "./adminView/editBankForm.php",
+    method: "post",
+    data: { record: id },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
+
 //update variation after submit
 function updateVariations() {
   var v_id = $("#v_id").val();
@@ -426,6 +524,36 @@ function updateAdmin() {
       alert("Update Success.");
       $("form").trigger("reset");
       showAdmin();
+    },
+  });
+}
+
+function updateBank() {
+  var b_id = $("#b_id").val();
+  var bname = $("#bname").val();
+  var fname = $("#fname").val();
+  var mname = $("#mname").val();
+  var lname = $("#lname").val();
+  var bnum = $("#bnum").val();
+
+  var fd = new FormData();
+  fd.append("b_id", b_id);
+  fd.append("bname", bname);
+  fd.append("fname", fname);
+  fd.append("mname", mname);
+  fd.append("lname", lname);
+  fd.append("bnum", bnum);
+
+  $.ajax({
+    url: "./controller/updateBankController.php",
+    method: "post",
+    data: fd,
+    processData: false,
+    contentType: false,
+    success: function (data) {
+      alert("Update Success.");
+      $("form").trigger("reset");
+      showBank();
     },
   });
 }

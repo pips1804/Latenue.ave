@@ -7,7 +7,7 @@ $last_name = $_POST['lname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$updateAdmin = mysqli_query($conn, "UPDATE users SET 
+$updateAdmin = mysqli_query($conn, "UPDATE users SET
         first_name='$first_name',
         last_name='$last_name',
         email='$email',

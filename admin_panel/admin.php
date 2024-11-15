@@ -28,7 +28,7 @@ if (!isset($_SESSION['email'])) {
         rel="shortcut icon"
         href="../bg-logo-img/logo.jpg"
         type="image/x-icon" />
-    <link rel="stylesheet" href="./assets//css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/admin.css">
     <link rel="stylesheet" href="./assets/css/media.css">
 </head>
@@ -231,6 +231,11 @@ if (!isset($_SESSION['email'])) {
     if (isset($_GET['supplier']) && $_GET['supplier'] == "success") {
         echo '<script> alert("Supplier Successfully Added")</script>';
     } else if (isset($_GET['supplier']) && $_GET['supplier'] == "error") {
+        echo '<script> alert("Adding Unsuccess")</script>';
+    }
+    if (isset($_GET['bank']) && $_GET['bank'] == "success") {
+        echo '<script> alert("Bank Details Successfully Added!")</script>';
+    } else if (isset($_GET['bank']) && $_GET['bank'] == "error") {
         echo '<script> alert("Adding Unsuccess")</script>';
     }
     ?>
