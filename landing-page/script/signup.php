@@ -18,18 +18,18 @@ if (isset($_POST['sign-up'])) {
         if ($_POST["password"] === $_POST["repeat-password"]) {
 
             $address_id = $conn->insert_id;
-            $insertUserQuery = "INSERT INTO users(first_name, last_name, email, contact_no, password, address_id)
-                                VALUES ('$firstName', '$lastName', '$email', '$phonenumber', '$password', '$address_id')";
+            $insertUserQuery = "INSERT INTO users(first_name, last_name, email, contact_no, password)
+                                VALUES ('$firstName', '$lastName', '$email', '$phonenumber', '$password')";
 
-                if ($conn->query($insertUserQuery) === TRUE) {
-                    $user_id = $conn->insert_id;
-                    $_SESSION['first-name'] = $firstName;
-                    $_SESSION['email'] = $email;
-                    $_SESSION['user_id'] = $user_id;
-                    header("Location: send-code.php");
-                } else {
-                    echo "Error: " . $conn->error;
-                }
+            if ($conn->query($insertUserQuery) === TRUE) {
+                $user_id = $conn->insert_id;
+                $_SESSION['first-name'] = $firstName;
+                $_SESSION['email'] = $email;
+                $_SESSION['user_id'] = $user_id;
+                header("Location: send-code.php");
+            } else {
+                echo "Error: " . $conn->error;
+            }
         } else {
             header("Location: ../index.php?signup=pwnotmatched");
         }

@@ -17,6 +17,9 @@
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="landing-page.css" />
     <link rel="stylesheet" href="form.css" />
 </head>
@@ -68,6 +71,7 @@
         <!-- Temporary Shit ---------------------------- -->
 
         <div class="verify-email-form-container" id="verify-email">
+            <button onclick="closeForm()"> <i class="fa-solid fa-xmark"></i></button>
             <p>Verify your Email</p>
             <form method="POST" action="script/verify-code.php" class="email-verification-form">
                 <div class="email-verification">
@@ -87,6 +91,7 @@
         <!-- ------------------------------------------ -->
 
         <div class="customer-signup-form-container" id="customer-sign-up">
+            <button onclick="closeForm()"> <i class="fa-solid fa-xmark"></i></button>
             <p>Sign Up</p>
             <form action="script/signup.php" class="customer-sign-up" method="post">
                 <div class="last-name">
@@ -135,6 +140,7 @@
         </div>
 
         <div class="customer-login-form-container" id="log-in">
+            <button onclick="closeForm()"> <i class="fa-solid fa-xmark"></i></button>
             <p>Log In</p>
             <form action="script/login.php" class="customer-log-in" method="post">
                 <div class="email">
@@ -179,6 +185,9 @@
         </div> -->
     </main>
     <script src="landing-page.js"></script>
+    <script
+        src="https://kit.fontawesome.com/28c1079d43.js"
+        crossorigin="anonymous"></script>
 
     <?php
     if (isset($_GET['login']) && $_GET['login'] == "error") {

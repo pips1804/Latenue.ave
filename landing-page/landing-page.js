@@ -1,33 +1,16 @@
-// displaying the dropdown
-// function logIn() {
-//   document.getElementById("login-dropdown").classList.toggle("log-in-show");
-// }
-// function signUp() {
-//   document.getElementById("signup-dropdown").classList.toggle("sign-up-show");
-// }
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (e) {
-  if (!e.target.matches(".log-in-drop-btn")) {
-    var loginDropdown = document.getElementById("login-dropdown");
-    if (loginDropdown.classList.contains("log-in-show")) {
-      loginDropdown.classList.remove("log-in-show");
-    }
-  }
-
-  if (!e.target.matches(".sign-up-drop-btn")) {
-    var signupDropdown = document.getElementById("signup-dropdown");
-    if (signupDropdown.classList.contains("sign-up-show")) {
-      signupDropdown.classList.remove("sign-up-show");
-    }
-  }
-};
-
 // displaying customer sign up form
 function displayCustomerSignUp() {
   const cusSignUpForm = document.getElementById("customer-sign-up");
+  const cusLogInForm = document.getElementById("log-in");
+  const verifyEmailForm = document.getElementById("verify-email");
 
-  cusSignUpForm.style.display = "block";
+  if (cusSignUpForm.style.display === "block") {
+    cusSignUpForm.style.display = "none";
+  } else {
+    cusSignUpForm.style.display = "block";
+    cusLogInForm.style.display = "none";
+    verifyEmailForm.style.display = "none";
+  }
 
   setTimeout(() => {
     document.addEventListener("click", hideFormOnClickOutside);
@@ -36,32 +19,35 @@ function displayCustomerSignUp() {
 
 // displaying customer log in form
 function displayLogIn() {
+  const cusSignUpForm = document.getElementById("customer-sign-up");
   const cusLogInForm = document.getElementById("log-in");
+  const verifyEmailForm = document.getElementById("verify-email");
 
-  cusLogInForm.style.display = "block";
-
+  if (cusLogInForm.style.display === "block") {
+    cusLogInForm.style.display = "none";
+  } else {
+    cusLogInForm.style.display = "block";
+    cusSignUpForm.style.display = "none";
+    verifyEmailForm.style.display = "none";
+  }
   setTimeout(() => {
     document.addEventListener("click", hideFormOnClickOutside);
   }, 0);
 }
 
-// displaying admin log in form
-// function displayAdminLogIn() {
-//   const adminLogInForm = document.getElementById("admin-log-in");
-
-//   adminLogInForm.style.display = "block";
-
-//   setTimeout(() => {
-//     document.addEventListener("click", hideFormOnClickOutside);
-//   }, 0);
-// }
-
 // displaying verify email form
 function verifyEmailForm() {
   const verifyEmailForm = document.getElementById("verify-email");
+  const cusSignUpForm = document.getElementById("customer-sign-up");
+  const cusLogInForm = document.getElementById("log-in");
 
-  verifyEmailForm.style.display = "block";
-
+  if (verifyEmailForm.style.display === "block") {
+    verifyEmailForm.style.display = "none";
+  } else {
+    verifyEmailForm.style.display = "block";
+    cusLogInForm.style.display = "none";
+    cusSignUpForm.style.display = "none";
+  }
   setTimeout(() => {
     document.addEventListener("click", hideFormOnClickOutside);
   }, 0);
@@ -69,35 +55,27 @@ function verifyEmailForm() {
 
 // hiding customer or admin sign up/log in form
 function hideFormOnClickOutside(event) {
-  const cusSignUpForm = document.getElementById("customer-sign-up");
-  const triggerButton = document.getElementsByClassName("sign-up-button");
-  const cusLogInForm = document.getElementById("log-in");
-  const triggerButton2 = document.getElementsByClassName("log-in-button");
-  const verifyEmailForm = document.getElementById("verify-email");
-  const triggerButton3 = document.getElementsByClassName("verify-button");
-
-  if (!cusSignUpForm.contains(event.target) && event.target !== triggerButton) {
-    cusSignUpForm.style.display = "none";
-    document.removeEventListener("click", hideFormOnClickOutside);
-  }
-  //   if (
-  //     !adminLogInForm.contains(event.target) &&
-  //     event.target !== triggerButton2
-  //   ) {
-  //     adminLogInForm.style.display = "none";
+  //   const cusSignUpForm = document.getElementById("customer-sign-up");
+  //   const triggerButton = document.getElementsByClassName("sign-up-button");
+  //   const cusLogInForm = document.getElementById("log-in");
+  //   const triggerButton2 = document.getElementsByClassName("log-in-button");
+  //   const verifyEmailForm = document.getElementById("verify-email");
+  //   const triggerButton3 = document.getElementsByClassName("verify-button");
+  //   if (!cusSignUpForm.contains(event.target) && event.target !== triggerButton) {
+  //     cusSignUpForm.style.display = "none";
   //     document.removeEventListener("click", hideFormOnClickOutside);
   //   }
-  if (!cusLogInForm.contains(event.target) && event.target !== triggerButton2) {
-    cusLogInForm.style.display = "none";
-    document.removeEventListener("click", hideFormOnClickOutside);
-  }
-  if (
-    !verifyEmailForm.contains(event.target) &&
-    event.target !== triggerButton3
-  ) {
-    verifyEmailForm.style.display = "none";
-    document.removeEventListener("click", hideFormOnClickOutside);
-  }
+  //   if (!cusLogInForm.contains(event.target) && event.target !== triggerButton2) {
+  //     cusLogInForm.style.display = "none";
+  //     document.removeEventListener("click", hideFormOnClickOutside);
+  //   }
+  //   if (
+  //     !verifyEmailForm.contains(event.target) &&
+  //     event.target !== triggerButton3
+  //   ) {
+  //     verifyEmailForm.style.display = "none";
+  //     document.removeEventListener("click", hideFormOnClickOutside);
+  //   }
 }
 
 // show password functionality
@@ -140,3 +118,13 @@ function cusPass() {
 //     adminPass.type = "password";
 //   }
 // }
+
+function closeForm() {
+  const verifyEmailForm = document.getElementById("verify-email");
+  const cusSignUpForm = document.getElementById("customer-sign-up");
+  const cusLogInForm = document.getElementById("log-in");
+
+  verifyEmailForm.style.display = "none";
+  cusLogInForm.style.display = "none";
+  cusSignUpForm.style.display = "none";
+}

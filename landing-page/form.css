@@ -21,7 +21,7 @@
   font-size: 44px;
   font-weight: 600;
   color: #ffeac5;
-  margin-top: 40px;
+  margin-top: 16px;
   margin-bottom: 28px;
   text-align: center;
 }
@@ -136,7 +136,7 @@ input {
   font-size: 44px;
   font-weight: 600;
   color: #ffeac5;
-  margin-top: 40px;
+  margin-top: 16px;
   margin-bottom: 28px;
   text-align: center;
 }
@@ -185,7 +185,7 @@ input {
     font-size: 32px;
     font-weight: 600;
     color: #ffeac5;
-    margin-top: 28px;
+    margin-top: 20px;
     margin-bottom: 24px;
     text-align: center;
   }
@@ -261,7 +261,7 @@ input {
     font-size: 32px;
     font-weight: 600;
     color: #ffeac5;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 28px;
     text-align: center;
   }
@@ -276,4 +276,35 @@ input {
     gap: 20px;
     color: #ffeac5;
   }
+
+  .verify-email-form-container button i,
+  .customer-signup-form-container button i,
+  .customer-login-form-container button i {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    color: #ffdbb5;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+.verify-email-form-container button i,
+.customer-signup-form-container button i,
+.customer-login-form-container button i {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  color: #ffdbb5;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.verify-email-form-container button,
+.customer-signup-form-container button,
+.customer-login-form-container button {
+  background-color: transparent;
+  margin-bottom: 0;
 }
