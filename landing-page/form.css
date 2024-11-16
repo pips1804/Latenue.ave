@@ -71,15 +71,14 @@
   background: #ffdbb5;
 }
 
-
 .email-verification,
 .verification-code {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 8px;
-    color: #ffeac5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  color: #ffeac5;
 }
 
 .last-name,
