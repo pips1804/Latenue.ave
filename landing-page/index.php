@@ -72,7 +72,7 @@
             <form method="POST" action="script/verify-code.php" class="email-verification-form">
                 <div class="email-verification">
                     <label for="">Email</label>
-                    <input type="text" name="email" placeholder="Input the email you used" required>
+                    <input type="text" name="verify-email" placeholder="Input the email you used" required>
                 </div>
                 <div class="verification-code">
                     <label for="">Verification Code</label>

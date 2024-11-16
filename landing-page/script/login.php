@@ -45,13 +45,18 @@ if (isset($_POST['login'])) {
         logLogin($row['user_id']);
         header("Location: ../../customer-panel/mainpage.php");
         exit();
-    } else {
+    }
+    else {
 
         if ($result1->num_rows > 0) {
-            #header("Location: ../../admin_panel/admin.php");
-            header("Location: ../index.php?login=error1");
+            $row = $result1->fetch_assoc();
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['first_name'] = $row['first_name'];
+            logLogin($row['user_id']);
+            header("Location: ../../admin_panel/admin.php");
         }
-        elseif($result1->num_rows > 0){
+        elseif($result2->num_rows > 0){
             header( "Location: ../index.php?login=notverified");
         }
          else {
@@ -59,6 +64,8 @@ if (isset($_POST['login'])) {
         }
     }
 
-    $stmt->close();
+    $checkifadmin->close();
+    $checkifuser->close();
+    $checkifverified->close();
     $conn->close();
 }
