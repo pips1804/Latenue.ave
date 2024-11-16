@@ -308,7 +308,7 @@ function itemDelete(id) {
     method: "post",
     data: { record: id },
     success: function (data) {
-      alert("Items Successfully deleted");
+      alert("Items Successfully Archived");
       $("form").trigger("reset");
       showProductItems();
     },
@@ -321,7 +321,7 @@ function eWalletDelete(id) {
     method: "post",
     data: { record: id },
     success: function (data) {
-      alert("EWallet Successfully deleted");
+      alert("EWallet Successfully Archived");
       $("form").trigger("reset");
       showEWallet();
     },
@@ -378,7 +378,7 @@ function categoryDelete(id) {
     method: "post",
     data: { record: id },
     success: function (data) {
-      alert("Category Successfully deleted");
+      alert("Category Successfully Archived");
       $("form").trigger("reset");
       showCategory();
     },
@@ -391,7 +391,7 @@ function bankDelete(id) {
     method: "post",
     data: { record: id },
     success: function (data) {
-      alert("Bank Details Successfully deleted");
+      alert("Bank Details Successfully Archived");
       $("form").trigger("reset");
       showBank();
     },
@@ -404,7 +404,7 @@ function supplierDelete(id) {
     method: "post",
     data: { record: id },
     success: function (data) {
-      alert("Supplier Successfully deleted");
+      alert("Supplier Successfully Archived");
       $("form").trigger("reset");
       showSupplier();
     },
@@ -418,7 +418,7 @@ function sizeDelete(id) {
     method: "post",
     data: { record: id },
     success: function (data) {
-      alert("Size Successfully deleted");
+      alert("Size Successfully Archived");
       $("form").trigger("reset");
       showSizes();
     },
@@ -432,7 +432,7 @@ function variationDelete(id) {
     method: "post",
     data: { record: id },
     success: function (data) {
-      alert("Successfully deleted");
+      alert("Successfully Archived");
       $("form").trigger("reset");
       showProductSizes();
     },

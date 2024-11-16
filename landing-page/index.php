@@ -28,22 +28,22 @@
         </div>
         <div class="nav-links-container">
             <div class="log-in-container">
-                <button class="log-in-drop-btn" onclick="logIn()">
-                    Log In <i class="fa fa-caret-down"></i>
+                <button class="log-in-drop-btn" onclick="displayLogIn()">
+                    Log In
                 </button>
-                <div class="log-in-dropdown" id="login-dropdown">
+                <!-- <div class="log-in-dropdown" id="login-dropdown">
                     <a href="#" onclick="displayAdminLogIn()">As Admin</a>
                     <a href="#" onclick="displayCustomerLogIn()">As Customer</a>
-                </div>
+                </div> -->
             </div>
 
             <div class="sign-up-container">
-                <button class="sign-up-drop-btn" onclick="signUp()">
-                    Sign Up <i class="fa fa-caret-down"></i>
+                <button class="sign-up-drop-btn" onclick="displayCustomerSignUp()">
+                    Sign Up
                 </button>
-                <div class="sign-up-dropdown" id="signup-dropdown">
+                <!-- <div class="sign-up-dropdown" id="signup-dropdown">
                     <a href="#" onclick="displayCustomerSignUp()">As Customer</a>
-                </div>
+                </div> -->
             </div>
 
             <div class="sign-up-container">
@@ -87,7 +87,7 @@
         <!-- ------------------------------------------ -->
 
         <div class="customer-signup-form-container" id="customer-sign-up">
-            <p>Sign Up as Customer</p>
+            <p>Sign Up</p>
             <form action="script/signup.php" class="customer-sign-up" method="post">
                 <div class="last-name">
                     <label for="">Last Name</label>
@@ -164,8 +164,8 @@
             </form>
         </div>
 
-        <div class="customer-login-form-container" id="customer-log-in">
-            <p>Log In as Customer</p>
+        <div class="customer-login-form-container" id="log-in">
+            <p>Log In</p>
             <form action="script/login.php" class="customer-log-in" method="post">
                 <div class="email">
                     <label for="">Email</label>
@@ -186,7 +186,7 @@
             </form>
         </div>
 
-        <div class="admin-login-form-container" id="admin-log-in">
+        <!-- <div class="admin-login-form-container" id="admin-log-in">
             <p>Log In as Admin</p>
             <form action="script/admin-login.php" class="admin-log-in" method="post">
                 <div class="email">
@@ -206,7 +206,7 @@
                     <input type="submit" value="Log In" class="log-in-button" name="admin-login" />
                 </div>
             </form>
-        </div>
+        </div> -->
     </main>
     <script src="landing-page.js"></script>
 

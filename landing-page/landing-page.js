@@ -1,10 +1,10 @@
 // displaying the dropdown
-function logIn() {
-  document.getElementById("login-dropdown").classList.toggle("log-in-show");
-}
-function signUp() {
-  document.getElementById("signup-dropdown").classList.toggle("sign-up-show");
-}
+// function logIn() {
+//   document.getElementById("login-dropdown").classList.toggle("log-in-show");
+// }
+// function signUp() {
+//   document.getElementById("signup-dropdown").classList.toggle("sign-up-show");
+// }
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function (e) {
@@ -35,8 +35,8 @@ function displayCustomerSignUp() {
 }
 
 // displaying customer log in form
-function displayCustomerLogIn() {
-  const cusLogInForm = document.getElementById("customer-log-in");
+function displayLogIn() {
+  const cusLogInForm = document.getElementById("log-in");
 
   cusLogInForm.style.display = "block";
 
@@ -46,15 +46,15 @@ function displayCustomerLogIn() {
 }
 
 // displaying admin log in form
-function displayAdminLogIn() {
-  const adminLogInForm = document.getElementById("admin-log-in");
+// function displayAdminLogIn() {
+//   const adminLogInForm = document.getElementById("admin-log-in");
 
-  adminLogInForm.style.display = "block";
+//   adminLogInForm.style.display = "block";
 
-  setTimeout(() => {
-    document.addEventListener("click", hideFormOnClickOutside);
-  }, 0);
-}
+//   setTimeout(() => {
+//     document.addEventListener("click", hideFormOnClickOutside);
+//   }, 0);
+// }
 
 // displaying verify email form
 function verifyEmailForm() {
@@ -71,8 +71,7 @@ function verifyEmailForm() {
 function hideFormOnClickOutside(event) {
   const cusSignUpForm = document.getElementById("customer-sign-up");
   const triggerButton = document.getElementsByClassName("sign-up-button");
-  const cusLogInForm = document.getElementById("customer-log-in");
-  const adminLogInForm = document.getElementById("admin-log-in");
+  const cusLogInForm = document.getElementById("log-in");
   const triggerButton2 = document.getElementsByClassName("log-in-button");
   const verifyEmailForm = document.getElementById("verify-email");
   const triggerButton3 = document.getElementsByClassName("verify-button");
@@ -81,18 +80,21 @@ function hideFormOnClickOutside(event) {
     cusSignUpForm.style.display = "none";
     document.removeEventListener("click", hideFormOnClickOutside);
   }
-  if (
-    !adminLogInForm.contains(event.target) &&
-    event.target !== triggerButton2
-  ) {
-    adminLogInForm.style.display = "none";
-    document.removeEventListener("click", hideFormOnClickOutside);
-  }
+  //   if (
+  //     !adminLogInForm.contains(event.target) &&
+  //     event.target !== triggerButton2
+  //   ) {
+  //     adminLogInForm.style.display = "none";
+  //     document.removeEventListener("click", hideFormOnClickOutside);
+  //   }
   if (!cusLogInForm.contains(event.target) && event.target !== triggerButton2) {
     cusLogInForm.style.display = "none";
     document.removeEventListener("click", hideFormOnClickOutside);
   }
-  if (!verifyEmailForm.contains(event.target) && event.target !== triggerButton3) {
+  if (
+    !verifyEmailForm.contains(event.target) &&
+    event.target !== triggerButton3
+  ) {
     verifyEmailForm.style.display = "none";
     document.removeEventListener("click", hideFormOnClickOutside);
   }
@@ -129,12 +131,12 @@ function cusPass() {
   }
 }
 
-function adminPass() {
-  const adminPass = document.getElementById("adminLogPass");
+// function adminPass() {
+//   const adminPass = document.getElementById("adminLogPass");
 
-  if (adminPass.type == "password") {
-    adminPass.type = "text";
-  } else {
-    adminPass.type = "password";
-  }
-}
+//   if (adminPass.type == "password") {
+//     adminPass.type = "text";
+//   } else {
+//     adminPass.type = "password";
+//   }
+// }

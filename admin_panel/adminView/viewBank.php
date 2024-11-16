@@ -30,7 +30,7 @@
                         <td><?= $row["last_name"] ?></td>
                         <td><?= $row["bank_acct_no"] ?></td>
                         <td><button class="btn btn-primary" style="height:40px" onclick="bankEditForm('<?= $row['bank_id'] ?>')">Edit</button></td>
-                        <td><button class="btn btn-danger" style="height:40px" onclick="bankDelete('<?= $row['bank_id'] ?>')">Delete</button></td>
+                        <td><button class="btn btn-danger" style="height:40px" onclick="bankDelete('<?= $row['bank_id'] ?>')">Archive</button></td>
                     </tr>
             <?php
                     $count = $count + 1;

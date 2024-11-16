@@ -33,7 +33,7 @@
                                 <img height='100px' src='<?= $row["e_wallet_qrcode"] ?>'>
                             </a></td>
                         <td><button class="btn btn-primary" style="height:40px" onclick="eWalletEditForm('<?= $row['e_wallet_id'] ?>')">Edit</button></td>
-                        <td><button class="btn btn-danger" style="height:40px" onclick="eWalletDelete('<?= $row['e_wallet_id'] ?>')">Delete</button></td>
+                        <td><button class="btn btn-danger" style="height:40px" onclick="eWalletDelete('<?= $row['e_wallet_id'] ?>')">Archive</button></td>
                     </tr>
             <?php
                     $count = $count + 1;

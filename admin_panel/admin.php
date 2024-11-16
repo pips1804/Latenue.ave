@@ -81,7 +81,7 @@ if (!isset($_SESSION['email'])) {
         </a>
         <div class="inventory-container" style="display: none; margin-left: 20px;">
             <a href="#products" onclick="showProductItems(); closeNav()"><i class="fa fa-th"></i> Products</a>
-            <a href="#productsizes" onclick="showProductSizes(); closeNav()"><i class="fa fa-th-list"></i> Product Sizes</a>
+            <a href="#productsizes" onclick="showProductSizes(); closeNav()"><i class="fa fa-th-list"></i> Product Stocks</a>
         </div>
 
         <a href="javascript:void(0)" class="dropdown-btn" onclick="togglePaymentDropdown()">
