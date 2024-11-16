@@ -105,36 +105,6 @@
                 </div>
 
                 <div class="email">
-                    <label for="">Street</label>
-                    <input type="text" name="street" />
-                </div>
-
-                <div class="email">
-                    <label for="">Barangay</label>
-                    <input type="text" name="barangay" />
-                </div>
-
-                <div class="email">
-                    <label for="">Municipality</label>
-                    <input type="text" name="municipality" />
-                </div>
-
-                <div class="email">
-                    <label for="">Province</label>
-                    <input type="text" name="province" />
-                </div>
-
-                <div class="email">
-                    <label for="">Country</label>
-                    <input type="text" name="country" />
-                </div>
-
-                <div class="email">
-                    <label for="">Postal Code</label>
-                    <input type="text" name="postalcode" />
-                </div>
-
-                <div class="email">
                     <label for="">Phone Number</label>
                     <input type="text" name="phone-number" />
                 </div>

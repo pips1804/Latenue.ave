@@ -8,12 +8,6 @@ if (isset($_POST['sign-up'])) {
     $lastName = $_POST['last-name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $street = $_POST['street'];
-    $barangay = $_POST['barangay'];
-    $municipality = $_POST['municipality'];
-    $province = $_POST['province'];
-    $country = $_POST['country'];
-    $postalcode = $_POST['postalcode'];
     $phonenumber = $_POST['phone-number'];
 
     $checkEmail = "SELECT * FROM users WHERE email='$email'";
@@ -23,17 +17,11 @@ if (isset($_POST['sign-up'])) {
     } else {
         if ($_POST["password"] === $_POST["repeat-password"]) {
 
-            $insertAddressQuery = "INSERT INTO users_address(street, barangay, municipality, province, country, postalcode) 
-                                    VALUES ('$street', '$barangay', '$municipality', '$province', '$country', '$postalcode')";
-
-            if ($conn->query($insertAddressQuery) === TRUE) {
-
-                $address_id = $conn->insert_id;
-                $insertUserQuery = "INSERT INTO users(first_name, last_name, email, contact_no, password, address_id)
-                                        VALUES ('$firstName', '$lastName', '$email', '$phonenumber', '$password', '$address_id')";
+            $address_id = $conn->insert_id;
+            $insertUserQuery = "INSERT INTO users(first_name, last_name, email, contact_no, password, address_id)
+                                VALUES ('$firstName', '$lastName', '$email', '$phonenumber', '$password', '$address_id')";
 
                 if ($conn->query($insertUserQuery) === TRUE) {
-
                     $user_id = $conn->insert_id;
                     $_SESSION['first-name'] = $firstName;
                     $_SESSION['email'] = $email;
@@ -42,9 +30,6 @@ if (isset($_POST['sign-up'])) {
                 } else {
                     echo "Error: " . $conn->error;
                 }
-            } else {
-                echo "Error: " . $conn->error;
-            }
         } else {
             header("Location: ../index.php?signup=pwnotmatched");
         }
