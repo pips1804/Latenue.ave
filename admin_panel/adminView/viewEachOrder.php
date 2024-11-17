@@ -54,7 +54,7 @@
             include_once "../config/dbconnect.php";
             $ID = $_GET['orderID'];
             //echo $ID;
-            $sql = "SELECT * from product_size_variation v, order_details d 
+            $sql = "SELECT * from product_size_variation v, order_details d
         where v.variation_id=d.variation_id AND
         d.order_id=$ID";
             $result = $conn->query($sql);
@@ -107,7 +107,7 @@
         <?php
         $total_amount = 0;
         $ID = $_GET['orderID'];
-        $sql = "SELECT * from product_size_variation v, order_details d 
+        $sql = "SELECT * from product_size_variation v, order_details d
                 where v.variation_id=d.variation_id AND
                 d.order_id=$ID";
         $result = $conn->query($sql);

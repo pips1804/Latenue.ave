@@ -11,10 +11,6 @@ function displayCustomerSignUp() {
     cusLogInForm.style.display = "none";
     verifyEmailForm.style.display = "none";
   }
-
-  setTimeout(() => {
-    document.addEventListener("click", hideFormOnClickOutside);
-  }, 0);
 }
 
 // displaying customer log in form
@@ -30,9 +26,6 @@ function displayLogIn() {
     cusSignUpForm.style.display = "none";
     verifyEmailForm.style.display = "none";
   }
-  setTimeout(() => {
-    document.addEventListener("click", hideFormOnClickOutside);
-  }, 0);
 }
 
 // displaying verify email form
@@ -48,34 +41,6 @@ function verifyEmailForm() {
     cusLogInForm.style.display = "none";
     cusSignUpForm.style.display = "none";
   }
-  setTimeout(() => {
-    document.addEventListener("click", hideFormOnClickOutside);
-  }, 0);
-}
-
-// hiding customer or admin sign up/log in form
-function hideFormOnClickOutside(event) {
-  //   const cusSignUpForm = document.getElementById("customer-sign-up");
-  //   const triggerButton = document.getElementsByClassName("sign-up-button");
-  //   const cusLogInForm = document.getElementById("log-in");
-  //   const triggerButton2 = document.getElementsByClassName("log-in-button");
-  //   const verifyEmailForm = document.getElementById("verify-email");
-  //   const triggerButton3 = document.getElementsByClassName("verify-button");
-  //   if (!cusSignUpForm.contains(event.target) && event.target !== triggerButton) {
-  //     cusSignUpForm.style.display = "none";
-  //     document.removeEventListener("click", hideFormOnClickOutside);
-  //   }
-  //   if (!cusLogInForm.contains(event.target) && event.target !== triggerButton2) {
-  //     cusLogInForm.style.display = "none";
-  //     document.removeEventListener("click", hideFormOnClickOutside);
-  //   }
-  //   if (
-  //     !verifyEmailForm.contains(event.target) &&
-  //     event.target !== triggerButton3
-  //   ) {
-  //     verifyEmailForm.style.display = "none";
-  //     document.removeEventListener("click", hideFormOnClickOutside);
-  //   }
 }
 
 // show password functionality

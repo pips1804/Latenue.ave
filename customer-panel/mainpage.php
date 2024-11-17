@@ -292,6 +292,11 @@ if (!isset($_SESSION['email'])) {
     } else if (isset($_GET['cart']) && $_GET['cart'] == "error") {
         echo '<script> alert("Adding Unsuccess");</script>';
     }
+    if (isset($_GET['order']) && $_GET['order'] == "success") {
+        echo '<script> alert("Order Place Successfully")</script>';
+    } else if (isset($_GET['order']) && $_GET['order'] == "error") {
+        echo '<script> alert("Adding Unsuccess");</script>';
+    }
     ?>
     <!-- <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -304,7 +309,7 @@ if (!isset($_SESSION['email'])) {
     <script
         src="https://kit.fontawesome.com/28c1079d43.js"
         crossorigin="anonymous"></script>
-    <script src="../admin_panel/assets/js/ajaxWork.js"></script>
+    <script src="ajaxWork.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
