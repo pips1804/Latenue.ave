@@ -101,10 +101,10 @@ session_start();
                     ?>
                 </select><br>
             </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for="file">Upload Payment Slip:</label>
                 <input type="file" class="form-control-file" id="file" name="pay_slip">
-            </div> -->
+            </div>
             <div class="form-group">
                 <input type="submit" value="Place Order" class="btn placeorder-btn" name="upload">
             </div>

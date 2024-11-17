@@ -12,7 +12,7 @@
                     <th>Order Status</th>
                     <th>Payment Status</th>
                     <th>Payment Slip</th>
-                    <th>More Details</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <?php
@@ -62,7 +62,9 @@
                         }
                         ?>
 
-                        <td>Wala pa</td>
+                        <td><a href='../customer-panel/payment_slip/<?= $row["payment_slip"] ?>' target="_blank">
+                                <img height='100px' src='../customer-panel/payment_slip/<?= $row["payment_slip"] ?>'>
+                            </a></td>
 
                         <td><a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View</a></td>
                     </tr>
