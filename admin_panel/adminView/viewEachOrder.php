@@ -7,7 +7,6 @@
                     <th>Barangay</th>
                     <th>Municipality</th>
                     <th>Province</th>
-                    <th>Country</th>
                     <th>Postal Code</th>
                 </tr>
             </thead>
@@ -25,7 +24,6 @@
                         <td><?= $row["ship_add_barangay"] ?></td>
                         <td><?= $row["ship_add_municipality"] ?></td>
                         <td><?= $row["ship_add_province"] ?></td>
-                        <td><?= $row["ship_add_country"] ?></td>
                         <td><?= $row["ship_add_postalcode"] ?></td>
                     </tr>
             <?php
@@ -113,11 +111,11 @@
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                $total_price = $row['quantity'] * $row['unit_price'];
+                $total_price = (($row['quantity'] * $row['unit_price']) * .12) + $row['quantity'] * $row['unit_price'] + 100;
                 $total_amount += $total_price;
             }
         }
         ?>
-        <p class="total-amount">TOTAL AMOUNT: <?= $total_amount ?></p>
+        <p class="total-amount">TOTAL AMOUNT: ₱<?= $total_amount ?></p>
     </div>
 </div>

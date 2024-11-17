@@ -53,7 +53,7 @@ session_start();
         <div class="price-container">
             <p>Sub Total: ₱<?= number_format($sub_total, 2) ?></p>
             <?php
-            $shipping_fee = 70;
+            $shipping_fee = 100;
             $tax_rate = .12;
             $total_amount = ($sub_total * $tax_rate) + $sub_total + $shipping_fee;
             ?>
@@ -84,10 +84,6 @@ session_start();
             </div>
             <div class="form-group"> <label>Province:</label>
                 <input type="text" name="province" required><br>
-            </div>
-            <div class="form-group">
-                <label>Country:</label>
-                <input type="text" name="country" required><br>
             </div>
             <div class="form-group">
                 <label>Postcode:</label>

@@ -19,12 +19,13 @@
             include_once "../config/dbconnect.php";
             $sql = "SELECT * from orders, mode_of_payment WHERE orders.payment_method_id = mode_of_payment.payment_method_id";
             $result = $conn->query($sql);
+            $count = 1;
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
             ?>
                     <tr>
-                        <td><?= $row["order_id"] ?></td>
+                        <td><?= $count ?></td>
                         <td><?= $row["delivered_to"] ?></td>
                         <td><?= $row["phone_no"] ?></td>
                         <td><?= $row["order_date"] ?></td>
@@ -66,7 +67,7 @@
                         <td><a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View</a></td>
                     </tr>
             <?php
-
+                    $count += 1;
                 }
             }
             ?>
