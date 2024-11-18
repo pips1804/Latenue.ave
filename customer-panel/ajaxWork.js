@@ -95,3 +95,16 @@ function quantityMinus(id) {
     },
   });
 }
+
+function cancelOrder(id) {
+  $.ajax({
+    url: "controller/cancelOrderController.php",
+    method: "post",
+    data: { record: id },
+    success: function (data) {
+      alert("Order cancelled successfully");
+      $("form").trigger("reset");
+      showOrders();
+    },
+  });
+}

@@ -47,9 +47,13 @@ session_start();
                         ?>
                             <td>Shipped</td>
                         <?php
-                        } else {
+                        } elseif ($row["order_status"] == 3) {
                         ?>
                             <td>Delivered</td>
+                        <?php
+                        } else {
+                        ?>
+                            <td>Cancelled</td>
                         <?php
                         }
                         ?>
@@ -60,7 +64,17 @@ session_start();
 
                         <td>
                             <a class="btn btn-primary openPopup" data-href="./customerView/viewEachOrders.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);" data-toggle="modal" data-target="#viewOrders">View Order</a>
-                            <a class="btn btn-primary">Cancel Order</a>
+                            <?php
+                            if ($row['order_status'] == 0) {
+                            ?>
+                                <a class="btn btn-primary" onclick="cancelOrder(<?= $row['order_id'] ?>)">Cancel Order</a>
+                            <?php
+                            } else {
+                            ?>
+                                <a class="btn btn-primary" onclick="cancelOrder(<?= $row['order_id'] ?>" aria-disabled="true)">Cancel Order Unavailable</a>
+                            <?php
+                            }
+                            ?>
                         </td>
                     </tr>
             <?php

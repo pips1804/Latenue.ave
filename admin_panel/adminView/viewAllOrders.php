@@ -49,6 +49,10 @@
                         ?>
                             <td><button class="btn btn-success" onclick="ChangeOrderStatus('<?= $row['order_id'] ?>')">Delivered</button></td>
                         <?php
+                        } elseif ($row["order_status"] == 4) {
+                        ?>
+                            <td><button class="btn btn-success" onclick="ChangeOrderStatus('<?= $row['order_id'] ?>')">Cancelled</button></td>
+                        <?php
                         }
                         if ($row["pay_status"] == 0) {
                         ?>
