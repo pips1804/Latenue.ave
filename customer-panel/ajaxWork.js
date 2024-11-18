@@ -9,6 +9,28 @@ function showCart() {
   });
 }
 
+function showCheckout() {
+  $.ajax({
+    url: "customerView/viewCheckout.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section-customer").html(data);
+    },
+  });
+}
+
+function showOrders() {
+  $.ajax({
+    url: "customerView/viewOrders.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section-customer").html(data);
+    },
+  });
+}
+
 function cartDelete(id) {
   $.ajax({
     url: "controller/deleteCartController.php",
@@ -70,17 +92,6 @@ function quantityMinus(id) {
         alert(response.message);
       }
       showCart();
-    },
-  });
-}
-
-function showCheckout() {
-  $.ajax({
-    url: "customerView/viewCheckout.php",
-    method: "post",
-    data: { record: 1 },
-    success: function (data) {
-      $(".allContent-section-customer").html(data);
     },
   });
 }

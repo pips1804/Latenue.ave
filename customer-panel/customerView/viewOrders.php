@@ -1,23 +1,27 @@
-<div id="ordersBtn">
-    <p class="section-title">Order Details</p>
-    <div class="scrollable-table">
-        <table class="table">
+<?php
+include_once "../../admin_panel/config/dbconnect.php";
+
+session_start();
+?>
+<div id="ordersBtn" class="cart-section">
+    <p class="cart-title">Your Orders</p>
+    <div class="scrollable-table cart-table-container">
+        <table class="">
             <thead>
                 <tr>
-                    <th>O.N.</th>
-                    <th>Customer</th>
-                    <th>Contact</th>
-                    <th>Order Date</th>
-                    <th>Payment Method</th>
-                    <th>Order Status</th>
-                    <th>Payment Status</th>
-                    <th>Payment Slip</th>
-                    <th>Actions</th>
+                    <th class="text-center">O.N.</th>
+                    <th class="text-center">Recipient Name</th>
+                    <th class="text-center">Contact</th>
+                    <th class="text-center">Order Date</th>
+                    <th class="text-center">Payment Method</th>
+                    <th class="text-center">Order Status</th>
+                    <th class="text-center">Payment Slip</th>
+                    <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <?php
-            include_once "../config/dbconnect.php";
-            $sql = "SELECT * from orders, mode_of_payment WHERE orders.payment_method_id = mode_of_payment.payment_method_id";
+            $user_id = $_SESSION['user_id'];
+            $sql = "SELECT * from orders, mode_of_payment WHERE orders.payment_method_id = mode_of_payment.payment_method_id AND orders.user_id = $user_id";
             $result = $conn->query($sql);
             $count = 1;
 
@@ -50,23 +54,15 @@
                             <td><button class="btn btn-success" onclick="ChangeOrderStatus('<?= $row['order_id'] ?>')">Delivered</button></td>
                         <?php
                         }
-                        if ($row["pay_status"] == 0) {
-                        ?>
-                            <td><button class="btn btn-danger" onclick="ChangePay('<?= $row['order_id'] ?>')">Unpaid</button></td>
-                        <?php
-
-                        } else if ($row["pay_status"] == 1) {
-                        ?>
-                            <td><button class="btn btn-success" onclick="ChangePay('<?= $row['order_id'] ?>')">Paid </button></td>
-                        <?php
-                        }
                         ?>
 
                         <td><a href='../customer-panel/payment_slip/<?= $row["payment_slip"] ?>' target="_blank">
                                 <img height='100px' src='../customer-panel/payment_slip/<?= $row["payment_slip"] ?>'>
                             </a></td>
 
-                        <td><a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View</a></td>
+                        <td><a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View Order</a>
+                            <a class="btn btn-primary">Cancel Order</a>
+                        </td>
                     </tr>
             <?php
                     $count += 1;
@@ -91,11 +87,10 @@
             <div class="order-view-modal modal-body">
 
             </div>
-        </div><!--/ Modal content-->
-    </div><!-- /Modal dialog-->
+        </div>
+    </div>
 </div>
 <script>
-    //for view order modal
     $(document).ready(function() {
         $('.openPopup').on('click', function() {
             var dataURL = $(this).attr('data-href');

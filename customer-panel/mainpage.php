@@ -61,6 +61,9 @@ if (!isset($_SESSION['email'])) {
         </div>
 
         <div class="btn-container">
+            <a href="#orders" onclick="showOrders()">
+                <li class="fa-solid fa-bag-shopping fa-xl"></li>
+            </a>
             <div class="add-to-cart-btn">
                 <a href="#cart" onclick="showCart()">
                     <li class="fa-solid fa-cart-shopping fa-xl"></li>
@@ -69,9 +72,6 @@ if (!isset($_SESSION['email'])) {
                     <p class="cart-count"><?= $count ?></p>
                 </div>
             </div>
-            <a href="">
-                <li class="fa-solid fa-user fa-xl"></li>
-            </a>
             <a href="" data-toggle="modal" data-target="#viewLogOut">
                 <li class="fa-solid fa-right-from-bracket fa-xl"></li>
             </a>
