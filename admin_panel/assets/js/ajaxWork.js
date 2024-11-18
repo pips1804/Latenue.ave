@@ -83,17 +83,6 @@ function showAdmin() {
   });
 }
 
-function showCart() {
-  $.ajax({
-    url: "../customer-panel/customerView/viewCart.php",
-    method: "post",
-    data: { record: 1 },
-    success: function (data) {
-      $(".allContent-section-customer").html(data);
-    },
-  });
-}
-
 function showAudit() {
   $.ajax({
     url: "./adminView/viewAuditLog.php",
@@ -328,25 +317,6 @@ function eWalletDelete(id) {
   });
 }
 
-//delete cart data
-// function addToCart() {
-//   var v_id = $("#variation_id").val();
-//   var fd = new FormData();
-//   fd.append("variation_id", v_id);
-
-//   $.ajax({
-//     url: "../customer-panel/controller/addToCartController.php",
-//     method: "post",
-//     data: fd,
-//     processData: false,
-//     contentType: false,
-//     success: function (data) {
-//       alert("Product added to cart successfully.");
-//       $("form").trigger("reset");
-//     },
-//   });
-// }
-
 function cartDelete(id) {
   $.ajax({
     url: "../customer-panel/controller/deleteCartController.php",
@@ -565,90 +535,6 @@ function search(id) {
     data: { record: id },
     success: function (data) {
       $(".eachCategoryProducts").html(data);
-    },
-  });
-}
-
-function quantityPlus(id) {
-  $.ajax({
-    url: "../customer-panel/controller/addQuantityController.php",
-    method: "post",
-    data: { record: id },
-    success: function (data) {
-      // $("form").trigger("reset");
-      // showMyCart();
-      const response = JSON.parse(data);
-      if (response.status === "success") {
-        $("#quantity-" + id).text(response.quantity);
-
-        // Get the unit price from the DOM and calculate the new total price
-        const unitPrice = parseFloat($("#unit-price-" + id).text());
-        const newTotalPrice = (unitPrice * response.quantity).toFixed(2);
-
-        // Update the total price in the DOM
-        $("#total-price-" + id).text(newTotalPrice);
-      } else {
-        alert(response.message);
-      }
-      showCart();
-    },
-  });
-}
-function quantityMinus(id) {
-  $.ajax({
-    url: "../customer-panel/controller/subQuantityController.php",
-    method: "post",
-    data: { record: id },
-    success: function (data) {
-      // $("form").trigger("reset");
-      // showMyCart();
-      const response = JSON.parse(data);
-      if (response.status === "success") {
-        $("#quantity-" + id).text(response.quantity);
-
-        // Get the unit price from the DOM and calculate the new total price
-        const unitPrice = parseFloat($("#unit-price-" + id).text());
-        const newTotalPrice = (unitPrice * response.quantity).toFixed(2);
-
-        // Update the total price in the DOM
-        $("#total-price-" + id).text(newTotalPrice);
-      } else {
-        alert(response.message);
-      }
-      showCart();
-    },
-  });
-}
-
-function checkout() {
-  $.ajax({
-    url: "./view/viewCheckout.php",
-    method: "post",
-    data: { record: 1 },
-    success: function (data) {
-      $(".allContent-section").html(data);
-    },
-  });
-}
-
-function removeFromWish(id) {
-  $.ajax({
-    url: "./controller/removeFromWishlist.php",
-    method: "post",
-    data: { record: id },
-    success: function (data) {
-      alert("Removed from wishlist");
-    },
-  });
-}
-
-function addToWish(id) {
-  $.ajax({
-    url: "./controller/addToWishlist.php",
-    method: "post",
-    data: { record: id },
-    success: function (data) {
-      alert("Added to wishlist");
     },
   });
 }

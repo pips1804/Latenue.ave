@@ -405,3 +405,32 @@ tr:nth-child(even) {
   display: block !important;
   width: 220px !important;
 }
+
+.customer-order-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.scrollable-order-details {
+  max-height: 350px;
+  height: auto;
+  width: auto;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.modal-content {
+  background-color: #ffeac5 !important;
+}
+
+.modal-title {
+  color: #603f26 !important;
+}
+
+.total-amount-container p {
+  font-weight: bold;
+  color: #603f26;
+  font-size: 24px;
+}
