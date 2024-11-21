@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['admin_email'])) {
 
     header("Location: ../landing-page/index.php?login=required");
     exit();
@@ -48,7 +48,7 @@ if (!isset($_SESSION['email'])) {
                     height="120"
                     alt=""
                     class="admin-profile" />
-                <h5 style="margin-top: 10px">Hello, <?= $_SESSION['first_name'] ?>!</h5>
+                <h5 style="margin-top: 10px">Hello, <?= $_SESSION['admin_first_name'] ?>!</h5>
             </div>
 
             <hr

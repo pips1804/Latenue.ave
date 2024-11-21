@@ -40,26 +40,23 @@ if (isset($_POST['login'])) {
 
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['user_id'];
-        $_SESSION['email'] = $row['email'];
+        $_SESSION['user_email'] = $row['email'];
         $_SESSION['first_name'] = $row['first_name'];
         logLogin($row['user_id']);
         header("Location: ../../customer-panel/mainpage.php");
         exit();
-    }
-    else {
+    } else {
 
         if ($result1->num_rows > 0) {
             $row = $result1->fetch_assoc();
             $_SESSION['user_id'] = $row['user_id'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['first_name'] = $row['first_name'];
+            $_SESSION['admin_email'] = $row['email'];
+            $_SESSION['admin_first_name'] = $row['first_name'];
             logLogin($row['user_id']);
             header("Location: ../../admin_panel/admin.php");
-        }
-        elseif($result2->num_rows > 0){
-            header( "Location: ../index.php?login=notverified");
-        }
-         else {
+        } elseif ($result2->num_rows > 0) {
+            header("Location: ../index.php?login=notverified");
+        } else {
             header("Location: ../index.php?login=error");
         }
     }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['user_email'])) {
 
     header("Location: ../landing-page/index.php?login=required");
     exit();
@@ -21,6 +21,11 @@ if (!isset($_SESSION['email'])) {
         href="../bg-logo-img/logo.jpg"
         type="image/x-icon" />
     <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous" />
+    <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
@@ -31,6 +36,7 @@ if (!isset($_SESSION['email'])) {
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 
 </head>
 
@@ -73,7 +79,7 @@ if (!isset($_SESSION['email'])) {
                     <p class="cart-count"><?= $count ?></p>
                 </div>
             </div>
-            <a href="" data-toggle="modal" data-target="#viewLogOut">
+            <a href="#logout" data-toggle="modal" data-target="#viewLogOut">
                 <li class="fa-solid fa-right-from-bracket fa-xl"></li>
             </a>
         </div>
@@ -299,10 +305,6 @@ if (!isset($_SESSION['email'])) {
         echo '<script> alert("Adding Unsuccess");</script>';
     }
     ?>
-    <!-- <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script> -->
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
@@ -313,6 +315,7 @@ if (!isset($_SESSION['email'])) {
     <script src="ajaxWork.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

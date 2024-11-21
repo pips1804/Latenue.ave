@@ -66,7 +66,6 @@ session_start();
             <?php
             $sql = "SELECT * FROM e_wallet_info";
             $result = $conn->query($sql);
-            $sub_total = 0;
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -86,7 +85,7 @@ session_start();
 
     <div class="form-container">
         <form method="POST" action="./controller/checkoutController.php" enctype='multipart/form-data'>
-            <input type="hidden" name="sub_total" value="<?= $sub_total; ?>">
+            <input type="hidden" name="sub_total" value="<?= $sub_total ?>">
             <div class="form-group">
                 <label>Recipient Name:</label>
                 <input type="text" name="recipient_name" required><br>

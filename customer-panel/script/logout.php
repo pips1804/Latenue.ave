@@ -21,4 +21,4 @@ function logLogout()
 }
 
 logLogout();
-echo "function not run!";
+header("Location: ../../landing-page/index.php?logout=success");
