@@ -1,7 +1,7 @@
 <div id="ordersBtn">
-    <p class="section-title">Order Details</p>
+    <p class="section-title">Shipped Orders</p>
     <div class="scrollable-table">
-        <table class="table">
+        <table class="table" style="width: 80vw;">
             <thead>
                 <tr>
                     <th>O.N.</th>
@@ -17,7 +17,7 @@
             </thead>
             <?php
             include_once "../config/dbconnect.php";
-            $sql = "SELECT * from orders, mode_of_payment WHERE orders.payment_method_id = mode_of_payment.payment_method_id";
+            $sql = "SELECT * from orders, mode_of_payment WHERE orders.payment_method_id = mode_of_payment.payment_method_id AND orders.order_status = 2";
             $result = $conn->query($sql);
             $count = 1;
 
@@ -70,7 +70,10 @@
                                 <img height='100px' src='../customer-panel/payment_slip/<?= $row["payment_slip"] ?>'>
                             </a></td>
 
-                        <td><a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View</a></td>
+                        <td><a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View</a>
+                            <a href="" class="btn btn-primary ">Send Invoice</a>
+                            <a href="" class="btn btn-primary ">View Invoice</a>
+                        </td>
                     </tr>
             <?php
                     $count += 1;

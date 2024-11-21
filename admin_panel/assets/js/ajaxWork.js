@@ -61,9 +61,53 @@ function showCustomers() {
   });
 }
 
-function showOrders() {
+function showPending() {
   $.ajax({
-    url: "./adminView/viewAllOrders.php",
+    url: "./adminView/viewPendingOrder.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
+
+function showProcessing() {
+  $.ajax({
+    url: "./adminView/viewProcessingOrder.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
+
+function showShipped() {
+  $.ajax({
+    url: "./adminView/viewShippedOrder.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
+
+function showDelivered() {
+  $.ajax({
+    url: "./adminView/viewDeliveredOrder.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
+
+function showCancelled() {
+  $.ajax({
+    url: "./adminView/viewCancelledOrder.php",
     method: "post",
     data: { record: 1 },
     success: function (data) {
@@ -116,7 +160,7 @@ function showEWallet() {
   });
 }
 
-function ChangeOrderStatus(id) {
+function ChangeToProcessing(id) {
   $.ajax({
     url: "./controller/updateOrderStatus.php",
     method: "post",
@@ -124,7 +168,20 @@ function ChangeOrderStatus(id) {
     success: function (data) {
       alert("Order Status updated successfully");
       $("form").trigger("reset");
-      showOrders();
+      showProcessing();
+    },
+  });
+}
+
+function ChangeToShipped(id) {
+  $.ajax({
+    url: "./controller/updateOrderStatus.php",
+    method: "post",
+    data: { record: id },
+    success: function (data) {
+      alert("Order Status updated successfully");
+      $("form").trigger("reset");
+      showShipped();
     },
   });
 }
@@ -137,7 +194,7 @@ function ChangePay(id) {
     success: function (data) {
       alert("Payment Status updated successfully");
       $("form").trigger("reset");
-      showOrders();
+      showPending();
     },
   });
 }

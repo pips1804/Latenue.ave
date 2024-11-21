@@ -30,6 +30,9 @@ function toggleProdInfoDropdown() {
 
   var dropdown2 = document.querySelector(".bank-container");
   dropdown2.style.display = "none";
+
+  var dropdown2 = document.querySelector(".order-container");
+  dropdown2.style.display = "none";
 }
 
 function toggleInventoryDropdown() {
@@ -41,15 +44,35 @@ function toggleInventoryDropdown() {
 
   var dropdown2 = document.querySelector(".bank-container");
   dropdown2.style.display = "none";
+
+  var dropdown2 = document.querySelector(".order-container");
+  dropdown2.style.display = "none";
 }
 
 function togglePaymentDropdown() {
-    var dropdown = document.querySelector(".bank-container");
-    dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+  var dropdown = document.querySelector(".bank-container");
+  dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
 
-    var dropdown1 = document.querySelector(".prod-info-container");
-    dropdown1.style.display = "none";
+  var dropdown1 = document.querySelector(".prod-info-container");
+  dropdown1.style.display = "none";
 
-    var dropdown2 = document.querySelector(".inventory-container");
-    dropdown2.style.display = "none";
-  }
+  var dropdown2 = document.querySelector(".inventory-container");
+  dropdown2.style.display = "none";
+
+  var dropdown2 = document.querySelector(".order-container");
+  dropdown2.style.display = "none";
+}
+
+function toggleOrderDropdown() {
+  var dropdown = document.querySelector(".order-container");
+  dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+
+  var dropdown1 = document.querySelector(".prod-info-container");
+  dropdown1.style.display = "none";
+
+  var dropdown2 = document.querySelector(".inventory-container");
+  dropdown2.style.display = "none";
+
+  var dropdown2 = document.querySelector(".bank-container");
+  dropdown2.style.display = "none";
+}
