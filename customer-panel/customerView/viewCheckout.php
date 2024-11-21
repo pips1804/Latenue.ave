@@ -61,6 +61,27 @@ session_start();
             <p>Tax Rate: 12%</p>
             <p>Total Amount: ₱<?= number_format($total_amount, 2) ?></p>
         </div>
+
+        <div class="ewallet-container">
+            <?php
+            $sql = "SELECT * FROM e_wallet_info";
+            $result = $conn->query($sql);
+            $sub_total = 0;
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+            ?>
+                    <p class="e-wallet-name"><?= $row['e_wallet_name'] ?></p>
+                    <p class="e-wallet-owner"><?= $row['first_name'] ?> <?= $row['middle_name'] ?> <?= $row['last_name'] ?></p>
+                    <p class="e-wallet-no"><?= $row['e_wallet_no'] ?></p>
+                    <a href="../admin_panel/<?= $row['e_wallet_qrcode'] ?>" target="_blank">
+                        <img src="../admin_panel.<?= $row['e_wallet_qrcode'] ?>" alt="" height='100px'>
+                    </a>
+            <?php
+                }
+            }
+            ?>
+        </div>
     </div>
 
     <div class="form-container">
