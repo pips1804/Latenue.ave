@@ -595,3 +595,25 @@ function search(id) {
     },
   });
 }
+
+function sendInvoice(button) {
+  var orderId = button.getAttribute("data-order-id");
+  var email = button.getAttribute("data-email");
+  var name = button.getAttribute("data-name");
+
+  $.ajax({
+    url: "send_invoice.php",
+    type: "POST",
+    data: {
+      order_id: orderId,
+      email: email,
+      name: name,
+    },
+    success: function (response) {
+      alert("Invoice sent successfully to " + name);
+    },
+    error: function (xhr, status, error) {
+      alert("Error sending invoice. Please try again.");
+    },
+  });
+}

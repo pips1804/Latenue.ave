@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LATENUE.AVE</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+      .total .tax .shipping {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Invoice</h1>
+    <p>Dear {{customer_name}},</p>
+    <p>Thank you for your order. Here are the details:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{items_rows}}
+      </tbody>
+    </table>
+    <p class="tax">Tax: {{tax}}</p>
+    <p class="shipping">Shipping Fee: {{shipping}}</p>
+    <p class="total">Grand Total: {{grand_total}}</p>
+    <p>We appreciate your business!</p>
+  </body>
+</html>
