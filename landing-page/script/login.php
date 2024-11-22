@@ -13,8 +13,23 @@ function logLogin($user_id)
     $log->bind_param("iss", $user_id, $ipAddress, $sessionId);
     $log->execute();
 
-    $_SESSION['log_id'] = $conn->insert_id;
+    $_SESSION['user_log_id'] = $conn->insert_id;
 }
+
+function admin_logLogin($user_id)
+{
+    global $conn;
+
+    $ipAddress = $_SERVER['REMOTE_ADDR'];
+    $sessionId = session_id();
+
+    $log = $conn->prepare("INSERT INTO audit_trail_log (user_id, ip_address, session_id) VALUES (?, ?, ?)");
+    $log->bind_param("iss", $user_id, $ipAddress, $sessionId);
+    $log->execute();
+
+    $_SESSION['admin_log_id'] = $conn->insert_id;
+}
+
 
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
@@ -49,10 +64,10 @@ if (isset($_POST['login'])) {
 
         if ($result1->num_rows > 0) {
             $row = $result1->fetch_assoc();
-            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['admin_user_id'] = $row['user_id'];
             $_SESSION['admin_email'] = $row['email'];
             $_SESSION['admin_first_name'] = $row['first_name'];
-            logLogin($row['user_id']);
+            admin_logLogin($row['user_id']);
             header("Location: ../../admin_panel/admin.php");
         } elseif ($result2->num_rows > 0) {
             header("Location: ../index.php?login=notverified");
