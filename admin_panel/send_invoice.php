@@ -2,6 +2,8 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 include '../admin_panel/config/dbconnect.php';
 require '../vendor/autoload.php';
@@ -17,7 +19,6 @@ $email = $_POST['email'];
 $customer_name = $_POST['name'];
 $tax = .12;
 $shipping_fee = 100;
-$total_tax = 0;
 
 $getQuantity = "SELECT 
             OD.quantity, 
@@ -44,24 +45,43 @@ $items_rows = '';
 foreach ($order_items as $item) {
     $item_total = $item['quantity'] * $item['unit_price'];
     $grand_total += $item_total;
-    $total_tax = $grand_total * $tax;
 
     $items_rows .= '<tr>
         <td>' . htmlspecialchars($item['product_name']) . '</td>
         <td>' . htmlspecialchars($item['quantity']) . '</td>
-        <td>$' . number_format($item['unit_price'], 2) . '</td>
-        <td>$' . number_format($item_total, 2) . '</td>
+        <td>₱' . number_format($item['unit_price'], 2) . '</td>
+        <td>₱' . number_format($item_total, 2) . '</td>
     </tr>';
 }
+$total_tax = $grand_total * $tax;
+$total_amount = $shipping_fee + $total_tax + $grand_total;
+
 
 
 $htmlFile = 'invoice_template.html';
 $htmlContent = file_get_contents($htmlFile);
 $htmlContent = str_replace('{{customer_name}}', htmlspecialchars($customer_name), $htmlContent);
 $htmlContent = str_replace('{{items_rows}}', $items_rows, $htmlContent);
-$htmlContent = str_replace('{{grand_total}}', '₱' . number_format($grand_total, 2), $htmlContent);
+$htmlContent = str_replace('{{grand_total}}', '₱' . number_format($total_amount, 2), $htmlContent);
 $htmlContent = str_replace('{{shipping}}', '₱' . number_format($shipping_fee, 2), $htmlContent);
 $htmlContent = str_replace('{{tax}}', '₱' . number_format($total_tax, 2), $htmlContent);
+
+$options = new Options();
+$options->set('isHtml5ParserEnabled', true);
+$options->set('isPhpEnabled', true);
+
+$dompdf = new Dompdf($options);
+$dompdf->loadHtml($htmlContent);
+
+
+$dompdf->setPaper('A4', 'portrait');
+
+
+$dompdf->render();
+
+
+$pdfFilePath = '../invoices/invoice_' . $order_id . '.pdf';
+file_put_contents($pdfFilePath, $dompdf->output());
 
 
 $mail = new PHPMailer(true);
