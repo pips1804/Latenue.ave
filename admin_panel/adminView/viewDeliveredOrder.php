@@ -17,12 +17,13 @@
             </thead>
             <?php
             include_once "../config/dbconnect.php";
-            $sql = "SELECT * from orders, mode_of_payment WHERE orders.payment_method_id = mode_of_payment.payment_method_id AND orders.order_status = 3";
+            $sql = "SELECT * from orders, mode_of_payment, users WHERE orders.payment_method_id = mode_of_payment.payment_method_id AND orders.order_status = 3 AND orders.user_id = users.user_id";
             $result = $conn->query($sql);
             $count = 1;
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    $pdfFilePath = '../invoices/invoice_' . $row['order_id'] . '.pdf';
             ?>
                     <tr>
                         <td><?= $count ?></td>
@@ -71,8 +72,8 @@
                             </a></td>
 
                         <td><a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View</a>
-                            <a href="" class="btn btn-primary ">Send Invoice</a>
-                            <a href="" class="btn btn-primary ">View Invoice</a>
+                            <button class="btn btn-primary send-invoice-btn" data-order-id="<?= $row['order_id'] ?>" data-email="<?= htmlspecialchars($row['email']) ?>" data-name="<?= htmlspecialchars($row['first_name']) ?>" onclick="sendInvoice(this)">Send Invoice</button>
+                            <a href="<?= $pdfFilePath?>" target="_blank" class="btn btn-primary ">View Invoice</a>
                         </td>
                     </tr>
             <?php
