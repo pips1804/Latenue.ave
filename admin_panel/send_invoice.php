@@ -67,6 +67,7 @@ $htmlContent = str_replace('{{shipping}}', '₱' . number_format($shipping_fee, 
 $htmlContent = str_replace('{{tax}}', '₱' . number_format($total_tax, 2), $htmlContent);
 
 $options = new Options();
+$options->set('defaultFont', 'DejaVu Sans');
 $options->set('isHtml5ParserEnabled', true);
 $options->set('isPhpEnabled', true);
 
