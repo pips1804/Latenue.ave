@@ -14,10 +14,10 @@
             </thead>
             <?php
             include_once "../config/dbconnect.php";
-            $sql = "SELECT a.*, u.first_name, u.last_name, u.isAdmin 
-            FROM audit_trail_log a 
-            JOIN users u 
-            ON a.user_id = u.user_id";
+            $sql = "SELECT a.*, u.first_name, u.last_name, u.isAdmin
+            FROM audit_trail_log a
+            JOIN users u
+            ON a.user_id = u.user_id ORDER by a.login_time";
             $result = $conn->query($sql);
             $count = 1;
             if ($result->num_rows > 0) {
