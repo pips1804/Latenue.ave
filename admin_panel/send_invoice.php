@@ -20,17 +20,17 @@ $customer_name = $_POST['name'];
 $tax = .12;
 $shipping_fee = 100;
 
-$getQuantity = "SELECT 
-            OD.quantity, 
-            V.unit_price, 
-            P.product_name 
-        FROM 
+$getQuantity = "SELECT
+            OD.quantity,
+            V.unit_price,
+            P.product_name
+        FROM
             order_details OD
-        INNER JOIN 
+        INNER JOIN
             product_size_variation V ON OD.variation_id = V.variation_id
-        INNER JOIN 
+        INNER JOIN
             product P ON V.product_id = P.product_id
-        WHERE 
+        WHERE
             OD.order_id = $order_id";
 $result = $conn->query($getQuantity);
 
@@ -56,11 +56,21 @@ foreach ($order_items as $item) {
 $total_tax = $grand_total * $tax;
 $total_amount = $shipping_fee + $total_tax + $grand_total;
 
+$getPaymentMethod = "SELECT mp.payment_method
+                     FROM mode_of_payment mp
+                     INNER JOIN orders o ON o.payment_method_id = mp.payment_method_id
+                     WHERE o.order_id = $order_id";
+$result1 = $conn->query($getPaymentMethod);
 
+$payment_method = '';
+if ($row1 = $result1->fetch_assoc()) {
+    $payment_method = $row1['payment_method'];
+}
 
 $htmlFile = 'invoice_template.html';
 $htmlContent = file_get_contents($htmlFile);
 $htmlContent = str_replace('{{customer_name}}', htmlspecialchars($customer_name), $htmlContent);
+$htmlContent = str_replace('{{payment_method}}', htmlspecialchars($payment_method), $htmlContent);
 $htmlContent = str_replace('{{items_rows}}', $items_rows, $htmlContent);
 $htmlContent = str_replace('{{grand_total}}', '₱' . number_format($total_amount, 2), $htmlContent);
 $htmlContent = str_replace('{{shipping}}', '₱' . number_format($shipping_fee, 2), $htmlContent);
@@ -109,5 +119,3 @@ try {
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-
-?>

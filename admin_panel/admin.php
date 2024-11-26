@@ -129,7 +129,48 @@ if (!isset($_SESSION['admin_email'])) {
     ?>
 
     <div class="container allContent-section py-4">
+
         <div class="row cards-container">
+            <div class="col-sm-6 card-container">
+                <div class="card">
+                    <i class="fa fa-peso-sign mb-2" style="font-size: 70px"></i>
+                    <p style="color: #ffeac5; font-size: 24px;">Total Sales</p>
+                    <p style="color: #ffeac5; font-size: 30px">₱
+                        <?php
+                        $sql = "SELECT * from orders";
+                        $result = $conn->query($sql);
+                        $totalsales = 0;
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $totalsales += $row['subtotal'];
+                            }
+                        }
+                        echo number_format($totalsales, 2);
+                        ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-sm-6 card-container">
+                <div class="card">
+                    <i class="fa fa-users mb-2" style="font-size: 70px"></i>
+                    <p style="color: #ffeac5; font-size: 24px;">Total Users</p>
+                    <p style="color: #ffeac5; font-size: 30px">
+                        <?php
+                        $sql = "SELECT * from users where isAdmin=0";
+                        $result = $conn->query($sql);
+                        $count = 0;
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+
+                                $count = $count + 1;
+                            }
+                        }
+                        echo $count;
+                        ?>
+                    </p>
+                </div>
+            </div>
             <div class="col-sm-3 card-container">
                 <div class="card">
                     <i class="fa fa-users mb-2" style="font-size: 70px"></i>

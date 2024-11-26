@@ -23,8 +23,8 @@
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                $pdfFilePath = '../invoices/invoice_' . $row['order_id'] . '.pdf';
-                
+                    $pdfFilePath = '../invoices/invoice_' . $row['order_id'] . '.pdf';
+
             ?>
                     <tr>
                         <td><?= $count ?></td>
@@ -73,9 +73,21 @@
                             </a></td>
 
                         <td>
-                            <a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View</a>
-                            <button class="btn btn-primary send-invoice-btn" data-order-id="<?= $row['order_id'] ?>" data-email="<?= htmlspecialchars($row['email']) ?>" data-name="<?= htmlspecialchars($row['first_name']) ?>" onclick="sendInvoice(this)">Send Invoice</button>
-                            <a href="<?= $pdfFilePath?>" target="_blank" class="btn btn-primary ">View Invoice</a>
+                            <?php
+                            if ($row['pay_status'] == 0) {
+                            ?>
+                                <a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View</a>
+                                <button class="btn btn-primary send-invoice-btn" data-order-id="<?= $row['order_id'] ?>" data-email="<?= htmlspecialchars($row['email']) ?>" data-name="<?= htmlspecialchars($row['first_name']) ?>" onclick="sendInvoice(this)" disabled>Send Invoice</button>
+                                <a href="<?= $pdfFilePath ?>" target="_blank" class="btn btn-primary " aria-disabled="true">View Invoice</a>
+                            <?php
+                            } else {
+                            ?>
+                                <a class="btn btn-primary openPopup" data-href="./adminView/viewEachOrder.php?orderID=<?= $row['order_id'] ?>" href="javascript:void(0);">View</a>
+                                <button class="btn btn-primary send-invoice-btn" data-order-id="<?= $row['order_id'] ?>" data-email="<?= htmlspecialchars($row['email']) ?>" data-name="<?= htmlspecialchars($row['first_name']) ?>" onclick="sendInvoice(this)">Send Invoice</button>
+                                <a href="<?= $pdfFilePath ?>" target="_blank" class="btn btn-primary ">View Invoice</a>
+                            <?php
+                            }
+                            ?>
                         </td>
                     </tr>
             <?php
@@ -117,5 +129,4 @@
             });
         });
     });
-
 </script>

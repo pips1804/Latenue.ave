@@ -1,27 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>LATENUE.AVE</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latenue.ave</title>
+    <link rel="stylesheet" href="invoice_template.css" />
     <style>
-      body {
-        font-family: Arial, sans-serif;
-      }
       table {
         width: 100%;
         border-collapse: collapse;
       }
       th,
       td {
-        border: 1px solid #ddd;
+        border: 1px solid #ffdbb5;
         padding: 8px;
         text-align: left;
+        background-color: #6c4e31;
+        text-align: center;
       }
       th {
-        background-color: #f4f4f4;
+        background-color: #603f26;
+        color: #ffdbb5;
       }
-      .total .tax .shipping {
+      .total,
+      .tax,
+      .shipping,
+      .payment-method {
         font-weight: bold;
       }
+      tr {
+        background-color: #ffeac5;
+      }
+      td {
+        color: #ffdbb5;
+        background-color: #6c4e31;
+      }
+      p {
+        color: #6c4e31;
+        font-weight: bold;
+      }
+
       @font-face {
         font-family: "DejaVu Sans";
         src: url("assests/DejaVuSans.ttf") format("truetype");
@@ -29,28 +47,42 @@
       body {
         font-family: "DejaVu Sans", Arial, sans-serif;
       }
+
+      .title {
+        text-align: center;
+        color: #603f26;
+        font-weight: bold;
+      }
+
+      /* #FFEAC5 - light beige
+    #FFDBB5 - beige
+    #6C4E31 - brown
+    #603F26 - dark brown */
     </style>
   </head>
   <body>
-    <h1>Invoice</h1>
-    <p>Dear {{customer_name}},</p>
-    <p>Thank you for your order. Here are the details:</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Product Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{items_rows}}
-      </tbody>
-    </table>
-    <p class="tax">Tax: {{tax}}</p>
-    <p class="shipping">Shipping Fee: {{shipping}}</p>
-    <p class="total">Total Amount: {{grand_total}}</p>
-    <p>We appreciate your order!</p>
+    <body>
+      <h1 class="title">Invoice</h1>
+      <p>Dear {{customer_name}},</p>
+      <p>Thank you for your order. Here are the details of your order:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{items_rows}}
+        </tbody>
+      </table>
+      <p class="payment-method">Payment Method: {{payment_method}}</p>
+      <p class="tax">Tax: {{tax}}</p>
+      <p class="shipping">Shipping Fee: {{shipping}}</p>
+      <p class="total">Total Amount: {{grand_total}}</p>
+      <p>We appreciate your order!</p>
+    </body>
   </body>
 </html>
