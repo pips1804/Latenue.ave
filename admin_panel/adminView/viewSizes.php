@@ -21,7 +21,7 @@
                         <td><?= $count ?></td>
                         <td><?= $row["size_name"] ?></td>
                         <!-- <td><button class="btn btn-primary" >Edit</button></td> -->
-                        <td><button class="btn btn-danger" style="height:40px" onclick="sizeDelete('<?= $row['size_id'] ?>')">Archive</button></td>
+                        <td><button class="btn btn-danger" style="height:40px" onclick="sizeDelete('<?= $row['size_id'] ?>')">Delete</button></td>
                     </tr>
             <?php
                     $count = $count + 1;

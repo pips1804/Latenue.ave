@@ -25,7 +25,7 @@
                         <td><?= $row["supp_email"] ?></td>
                         <td><?= $row["supp_contact"] ?></td>
                         <!-- <td><button class="btn btn-primary" >Edit</button></td> -->
-                        <td><button class="btn btn-danger" style="height:40px" onclick="supplierDelete('<?= $row['supplier_id'] ?>')">Archive</button></td>
+                        <td><button class="btn btn-danger" style="height:40px" onclick="supplierDelete('<?= $row['supplier_id'] ?>')">Delete</button></td>
                     </tr>
             <?php
                     $count = $count + 1;

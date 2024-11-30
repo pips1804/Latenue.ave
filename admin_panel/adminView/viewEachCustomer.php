@@ -16,7 +16,7 @@
             include_once "../config/dbconnect.php";
             $ID = $_GET['userID'];
             //echo $ID;
-            $sql = "SELECT * from users u, users_address ud 
+            $sql = "SELECT * from users u, users_address ud
         where u.address_id=ud.address_id AND u.user_id=$ID";
             $result = $conn->query($sql);
             $count = 1;

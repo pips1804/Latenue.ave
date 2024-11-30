@@ -81,13 +81,13 @@ if (!isset($_SESSION['admin_email'])) {
                 <i class="fa fa-money-bills"></i> Payments <i class="fa fa-caret-down"></i>
             </a>
             <div class="bank-container" style="display: none; margin-left: 20px;">
-                <a href="#products" onclick="showBank(); closeNav()"><i class="fa fa-credit-card"></i> Bank Account</a>
+                <!-- <a href="#products" onclick="showBank(); closeNav()"><i class="fa fa-credit-card"></i> Bank Account</a> -->
                 <a href="#productsizes" onclick="showEWallet(); closeNav()"><i class="fa fa-wallet"></i> E-Wallet</a>
             </div>
 
             <a href="#customers" onclick="showCustomers(); closeNav()"><i class="fa fa-users"></i> Customers</a>
 
-            <!-- <a href="#products" onclick="showSupplier(); closeNav()"><i class="fa fa-user-tag"></i> Suppliers</a> -->
+            <a href="#products" onclick="showSupplier(); closeNav()"><i class="fa fa-user-tag"></i> Suppliers</a>
 
             <a href="javascript:void(0)" class="dropdown-btn" onclick="toggleOrderDropdown()">
                 <i class="fa fa-bag-shopping"></i> Orders <i class="fa fa-caret-down"></i>
@@ -129,48 +129,21 @@ if (!isset($_SESSION['admin_email'])) {
     ?>
 
     <div class="container allContent-section py-4">
-
         <div class="row cards-container">
             <div class="col-sm-6 card-container">
-                <div class="card">
-                    <i class="fa fa-peso-sign mb-2" style="font-size: 70px"></i>
-                    <p style="color: #ffeac5; font-size: 24px;">Total Sales</p>
-                    <p style="color: #ffeac5; font-size: 30px">₱
-                        <?php
-                        $sql = "SELECT * from orders";
-                        $result = $conn->query($sql);
-                        $totalsales = 0;
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $totalsales += $row['subtotal'];
-                            }
-                        }
-                        echo number_format($totalsales, 2);
-                        ?>
-                    </p>
+                <div class="card" style="width: 100%; height: 400px;">
+                    <p style="color: #ffeac5; font-size: 24px;">Weekly Sales</p>
+                    <canvas id="weeklySalesChart" width="500" height="300"></canvas>
                 </div>
             </div>
 
             <div class="col-sm-6 card-container">
-                <div class="card">
-                    <i class="fa fa-users mb-2" style="font-size: 70px"></i>
-                    <p style="color: #ffeac5; font-size: 24px;">Total Users</p>
-                    <p style="color: #ffeac5; font-size: 30px">
-                        <?php
-                        $sql = "SELECT * from users where isAdmin=0";
-                        $result = $conn->query($sql);
-                        $count = 0;
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-
-                                $count = $count + 1;
-                            }
-                        }
-                        echo $count;
-                        ?>
-                    </p>
+                <div class="card" style="width: 100%; height: 400px;">
+                    <p style="color: #ffeac5; font-size: 24px;">Monthly Sales</p>
+                    <canvas id="monthlySalesChart" width="500" height="300"></canvas>
                 </div>
             </div>
+
             <div class="col-sm-3 card-container">
                 <div class="card">
                     <i class="fa fa-users mb-2" style="font-size: 70px"></i>
@@ -291,6 +264,103 @@ if (!isset($_SESSION['admin_email'])) {
     <script
         src="https://kit.fontawesome.com/28c1079d43.js"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Fetch data from backend
+        fetch('./monthly_sales_chart.php')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(item => item.month);
+                const sales = data.map(item => parseFloat(item.total_sales));
+
+                // Render the Chart
+                const ctx = document.getElementById('monthlySalesChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar', // or 'bar'
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Monthly Sales',
+                            data: sales,
+                            borderColor: 'rgb(96, 63, 38)',
+                            backgroundColor: 'rgb(255, 234, 197)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: 'rgb(255, 219, 181)' // Change legend text color
+                                },
+                                display: true
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: 'rgb(255, 219, 181)' // Change x-axis text color
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: 'rgb(255, 219, 181)' // Change y-axis text color
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+
+        fetch('./weekly_sales_chart.php')
+            .then(response => response.json())
+            .then(data => {
+                const labels = data.map(item => item.week);
+                const sales = data.map(item => parseFloat(item.total_sales));
+
+                // Render the Chart
+                const ctx = document.getElementById('weeklySalesChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar', // or 'bar'
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Weekly Sales',
+                            data: sales,
+                            borderColor: 'rgb(96, 63, 38)',
+                            backgroundColor: 'rgb(255, 234, 197)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: 'rgb(255, 219, 181)' // Change legend text color
+                                },
+                                display: true
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: 'rgb(255, 219, 181)' // Change x-axis text color
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: 'rgb(255, 219, 181)' // Change y-axis text color
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
 </body>
 
 </html>

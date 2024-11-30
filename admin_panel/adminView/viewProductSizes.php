@@ -1,5 +1,5 @@
 <div>
-    <p class="section-title">Product Sizes Item</p>
+    <p class="section-title">Product Stocks</p>
     <div class="scrollable-table prod-size-table">
         <table class="table ">
             <thead>
@@ -59,7 +59,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">New Product Size Variation</h4>
+                    <h4 class="modal-title">New Product Stock Variation</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">

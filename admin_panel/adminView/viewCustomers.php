@@ -9,7 +9,7 @@
                     <th class="text-center">Email</th>
                     <th class="text-center">Contact Number</th>
                     <th class="text-center">Joining Date</th>
-                    <th class="text-center">More Info</th>
+                    <!-- <th class="text-center">More Info</th> -->
                 </tr>
             </thead>
             <?php
@@ -27,7 +27,6 @@
                         <td><?= $row["email"] ?></td>
                         <td><?= $row["contact_no"] ?></td>
                         <td><?= $row["registered_at"] ?></td>
-                        <td><a class="btn btn-primary openPopup" style="color: #FFEAC5;" data-href="./adminView/viewEachCustomer.php?userID=<?= $row['user_id'] ?>" href="javascript:void(0);">View Address</a></td>
                     </tr>
             <?php
                     $count = $count + 1;

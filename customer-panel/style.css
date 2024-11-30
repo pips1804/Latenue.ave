@@ -434,3 +434,7 @@ tr:nth-child(even) {
   color: #603f26;
   font-size: 24px;
 }
+
+.log-out-warning {
+  color: #603f26;
+}
