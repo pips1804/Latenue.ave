@@ -17,7 +17,7 @@
             </thead>
             <?php
             include_once "../config/dbconnect.php";
-            $sql = "SELECT * from orders, mode_of_payment,users WHERE orders.payment_method_id = mode_of_payment.payment_method_id AND orders.order_status = 1 AND orders.user_id = users.user_id";
+            $sql = "SELECT * from view_processing_orders";
             $result = $conn->query($sql);
             $count = 1;
 

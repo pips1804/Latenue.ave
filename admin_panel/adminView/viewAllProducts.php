@@ -15,7 +15,7 @@
             </thead>
             <?php
             include_once "../config/dbconnect.php";
-            $sql = "SELECT * from product, category, supplier WHERE product.category_id=category.category_id AND product.supplier_id=supplier.supplier_id ORDER BY product.product_name ASC";
+            $sql = "SELECT * from view_products";
             $result = $conn->query($sql);
             $count = 1;
             if ($result->num_rows > 0) {
