@@ -14,7 +14,7 @@
             include_once "../config/dbconnect.php";
             $ID = $_GET['orderID'];
             //echo $ID;
-            $sql = "SELECT * FROM shipping_address sa, orders o WHERE sa.ship_id=o.ship_id and o.order_id = $ID";
+            $sql = "SELECT * FROM view_shipping_address WHERE order_id = $ID";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {

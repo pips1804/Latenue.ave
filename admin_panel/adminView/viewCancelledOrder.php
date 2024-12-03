@@ -17,7 +17,7 @@
             </thead>
             <?php
             include_once "../config/dbconnect.php";
-            $sql = "SELECT * from orders, mode_of_payment WHERE orders.payment_method_id = mode_of_payment.payment_method_id AND orders.order_status = 4";
+            $sql = "SELECT * from view_cancelled_orders";
             $result = $conn->query($sql);
             $count = 1;
 
