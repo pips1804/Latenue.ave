@@ -86,29 +86,55 @@ session_start();
     <div class="form-container">
         <form method="POST" action="./controller/checkoutController.php" enctype='multipart/form-data'>
             <input type="hidden" name="sub_total" value="<?= $sub_total ?>">
+
             <div class="form-group">
                 <label>Recipient Name:</label>
                 <input type="text" name="recipient_name" required><br>
             </div>
-            <div class="form-group"> <label>Contact Number:</label>
+
+            <div class="form-group">
+                <label>Contact Number:</label>
                 <input type="text" name="contact_number" required><br>
             </div>
-            <div class="form-group"> <label>Street:</label>
+
+            <div class="form-group">
+                <label>House No. and Street:</label>
                 <input type="text" name="street" required><br>
             </div>
-            <div class="form-group"> <label>Barangay:</label>
-                <input type="text" name="barangay" required><br>
+
+            <div class="form-group">
+                <label>Province:</label>
+                <select name="province" id="province-dropdown" required>
+                    <option value="">Select Province</option>
+                    <?php
+                    $sql = "SELECT name FROM provinces";
+                    $result = $conn->query($sql);
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+                    }
+                    ?>
+                </select><br>
             </div>
-            <div class="form-group"> <label>Municipality:</label>
-                <input type="text" name="municipality" required><br>
+
+            <div class="form-group">
+                <label>Municipality/City:</label>
+                <select name="municipality" id="municipality-dropdown" required>
+                    <option value="">Select Municipality</option>
+                </select><br>
             </div>
-            <div class="form-group"> <label>Province:</label>
-                <input type="text" name="province" required><br>
+
+            <div class="form-group">
+                <label>Barangay:</label>
+                <select name="barangay" id="barangay-dropdown" required>
+                    <option value="">Select Barangay</option>
+                </select><br>
             </div>
+
             <div class="form-group">
                 <label>Postcode:</label>
                 <input type="text" name="postcode" required><br>
             </div>
+
             <div class="form-group">
                 <label>Payment Method:</label>
                 <select name="payment_method_id">
@@ -121,14 +147,86 @@ session_start();
                     ?>
                 </select><br>
             </div>
+
             <div class="form-group">
                 <label for="file">Upload Payment Slip:</label>
                 <input type="file" class="form-control-file" id="file" name="pay_slip">
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Place Order" class="btn placeorder-btn" name="upload">
             </div>
-
         </form>
     </div>
 </div>
+
+<script>
+    // Fetching the data (you can optimize by serving this data from PHP directly)
+    const data = {
+        municipalities: <?php
+                        $sql = "SELECT name, province_name FROM municipalities";
+                        $result = $conn->query($sql);
+                        $municipalities = [];
+                        while ($row = $result->fetch_assoc()) {
+                            $municipalities[] = $row;
+                        }
+                        echo json_encode($municipalities);
+                        ?>,
+        barangays: <?php
+                    $sql = "SELECT name, municipality_name FROM barangays";
+                    $result = $conn->query($sql);
+                    $barangays = [];
+                    while ($row = $result->fetch_assoc()) {
+                        $barangays[] = $row;
+                    }
+                    echo json_encode($barangays);
+                    ?>
+    };
+
+    const provinceDropdown = document.getElementById("province-dropdown");
+    const municipalityDropdown = document.getElementById("municipality-dropdown");
+    const barangayDropdown = document.getElementById("barangay-dropdown");
+
+    // Update municipalities based on selected province
+    provinceDropdown.addEventListener("change", function() {
+        const selectedProvince = this.value;
+
+        // Clear existing options
+        municipalityDropdown.innerHTML = '<option value="">Select Municipality</option>';
+        barangayDropdown.innerHTML = '<option value="">Select Barangay</option>';
+
+        // Filter municipalities
+        const filteredMunicipalities = data.municipalities.filter(
+            (item) => item.province_name === selectedProvince
+        );
+
+        // Populate municipality dropdown
+        filteredMunicipalities.forEach((municipality) => {
+            const option = document.createElement("option");
+            option.value = municipality.name;
+            option.textContent = municipality.name;
+            municipalityDropdown.appendChild(option);
+        });
+    });
+
+    // Update barangays based on selected municipality
+    municipalityDropdown.addEventListener("change", function() {
+        const selectedMunicipality = this.value;
+
+        // Clear existing options
+        barangayDropdown.innerHTML = '<option value="">Select Barangay</option>';
+
+        // Filter barangays
+        const filteredBarangays = data.barangays.filter(
+            (item) => item.municipality_name === selectedMunicipality
+        );
+
+        // Populate barangay dropdown
+        filteredBarangays.forEach((barangay) => {
+            const option = document.createElement("option");
+            option.value = barangay.name;
+            option.textContent = barangay.name;
+            barangayDropdown.appendChild(option);
+        });
+    });
+</script>

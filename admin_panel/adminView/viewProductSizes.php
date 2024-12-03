@@ -37,7 +37,7 @@
                         <td><?= $row["quantity_in_stock"] ?></td>
                         <td><?= $row["unit_price"] ?></td>
                         <td><button class="btn btn-primary" style="height:40px" onclick="variationEditForm('<?= $row['variation_id'] ?>')">Edit</button></td>
-                        <td><button class="btn btn-danger" style="height:40px" onclick="variationDelete('<?= $row['variation_id'] ?>')">Archive</button></td>
+                        <td><button class="btn btn-danger" style="height:40px" onclick="variationDelete('<?= $row['variation_id'] ?>')">Delete</button></td>
                     </tr>
             <?php
                     $count = $count + 1;

@@ -48,8 +48,8 @@ function updatePrice(productId) {
     document
       .getElementById("priceDisplay-" + productId)
       .querySelector(".price-value").textContent = unitPrice
-      ? "$" + parseFloat(unitPrice).toFixed(2)
-      : "$0.00";
+      ? "₱" + parseFloat(unitPrice).toFixed(2)
+      : "₱0.00";
 
     // Store the selected variation ID in the hidden input
     const hiddenInput = document.querySelector(".variationId-" + productId);
