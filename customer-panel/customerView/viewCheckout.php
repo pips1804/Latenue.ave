@@ -20,11 +20,8 @@ session_start();
             <tbody>
                 <?php
                 $user_id = $_SESSION['user_id'];
-                $sql = "SELECT c.cart_id, c.quantity, ps.unit_price, p.product_name, p.product_image
-                        FROM cart c
-                        JOIN product_size_variation ps ON ps.variation_id = c.variation_id
-                        JOIN product p ON ps.product_id = p.product_id
-                        WHERE c.user_id = $user_id";
+                $sql = "SELECT cart_id, quantity, unit_price, product_name, product_image
+                        FROM view_checkout WHERE user_id = $user_id";
                 $result = $conn->query($sql);
                 $sub_total = 0;
 
