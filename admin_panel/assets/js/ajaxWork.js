@@ -160,6 +160,17 @@ function showEWallet() {
   });
 }
 
+function showTopProducts() {
+  $.ajax({
+    url: "./adminView/viewAllTopProducts.php",
+    method: "post",
+    data: { record: 1 },
+    success: function (data) {
+      $(".allContent-section").html(data);
+    },
+  });
+}
+
 function ChangeToProcessing(id) {
   $.ajax({
     url: "./controller/updateOrderStatus.php",

@@ -108,6 +108,8 @@ if (!isset($_SESSION['admin_email'])) {
           margin: 4px 0;
         " />
 
+            <a href="#admin" onclick="showTopProducts(); closeNav()"> <i class="fa fa-ranking-star"></i> Top Products</a>
+
             <a href="#admin" onclick="showAdmin(); closeNav()"> <i class="fa fa-user"></i> Administrator</a>
 
             <a href="#audit-trail" onclick="showAudit(); closeNav()"> <i class="fa-solid fa-newspaper"></i> Audit Trail Log</a>
