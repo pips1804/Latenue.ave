@@ -21,7 +21,7 @@ session_start();
             <tbody>
                 <?php
                 $user_id = $_SESSION['user_id'];
-                $sql = "SELECT cart_id, quantity, unit_price, product_name, product_image FROM view_cart WHERE user_id = $user_id";
+                $sql = "SELECT cart_id, quantity, unit_price, product_name, product_image FROM view_checkout WHERE user_id = $user_id";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {

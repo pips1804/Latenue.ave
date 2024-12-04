@@ -119,3 +119,19 @@ try {
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
+
+$user_id_query = "SELECT user_id FROM orders WHERE order_id = ?";
+$stmt = $conn->prepare($user_id_query);
+$stmt->bind_param("i", $order_id);
+$stmt->execute();
+$user_result = $stmt->get_result();
+
+if ($user_row = $user_result->fetch_assoc()) {
+    $user_id = $user_row['user_id'];
+} else {
+    die('Error: Could not find user_id for this order.');
+}
+
+$stmt_invoice = $conn->prepare("INSERT INTO invoice (user_id, order_id, invoice_total_amount) VALUES (?,?,?)");
+$stmt_invoice->bind_param("iid", $user_id, $order_id, $total_amount);
+$stmt_invoice->execute();
