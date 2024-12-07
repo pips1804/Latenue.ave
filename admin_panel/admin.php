@@ -112,7 +112,7 @@ if (!isset($_SESSION['admin_email'])) {
 
             <a href="#admin" onclick="showAdmin(); closeNav()"> <i class="fa fa-user"></i> Administrator</a>
 
-            <a href="#audit-trail" onclick="showAudit(); closeNav()"> <i class="fa-solid fa-newspaper"></i> Audit Trail Log</a>
+            <a href="#audit-trail" onclick="showAudit(); closeNav()"> <i class="fa-solid fa-newspaper"></i> User Log</a>
 
             <a href="admin_logout.php"> <i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
         </div>

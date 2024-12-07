@@ -1,5 +1,5 @@
 <div>
-    <p class="section-title">Audit Trail Log</p>
+    <p class="section-title">User Log</p>
     <div class="scrollable-table admin-table">
         <table class="table ">
             <thead>
